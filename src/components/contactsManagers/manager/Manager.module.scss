@@ -1,0 +1,132 @@
+.managerContainer {
+  position: relative;
+  display: flex;
+  background-color: var(--white);
+  padding: 20px 36px 20px 20px;
+  max-width: 392px;
+}
+.leftManagerContainer {
+  margin-right: 20px;
+}
+.imgContainer {
+  position: relative;
+  max-width: 166px;
+}
+
+.managerImg,
+.supportImg {
+  width: 100%;
+}
+
+.statusContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 20px;
+  right: 20px;
+  @media (max-width: 768px) {
+    display: none;
+    .statusTxt {
+      display: none;
+    }
+  }
+}
+
+.statusIcon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #c91b1b;
+}
+
+.online {
+  .statusIcon {
+    background-color: #1bc956;
+  }
+}
+.statusTxt {
+  font-size: 17px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.managerName {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 6px;
+  color: var(--dark);
+}
+
+.rightManagerContainer {
+  padding-top: 16px;
+}
+
+.supportContainer {
+  background-color: var(--white);
+  padding: 40px;
+  max-width: 392px;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.supportProfile {
+  display: flex;
+  column-gap: 17px;
+  margin-bottom: 45px;
+}
+
+.supportData {
+  margin-left: auto;
+  position: relative;
+}
+
+.supportStatus {
+  bottom: 0;
+  left: 0;
+}
+
+.txt {
+  font-size: 17px;
+  margin-top: 35px;
+  color: var(--dark);
+}
+
+.supportJobTitle {
+  font-size: 17px;
+  color: var(--txt-gray2);
+  white-space: nowrap;
+}
+.mobileStatus {
+  display: none;
+  right: -4px;
+  bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .mobileStatus {
+    display: flex;
+  }
+
+  .managerImg {
+    height: 80px;
+  }
+  .leftManagerContainer {
+    margin-right: 0px;
+  }
+
+  .rightManagerContainer {
+    padding-top: 0px;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 350px) {
+  .managerContainer {
+    padding: 20px 10px 20px 20px;
+  }
+  .leftManagerContainer {
+    margin-right: 20px;
+  }
+}

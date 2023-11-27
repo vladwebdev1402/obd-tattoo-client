@@ -1,0 +1,14 @@
+.catalogFooterContainer {
+  display: none;
+  margin-top: 40px;
+
+  @media (max-width: 1246px) {
+    display: block;
+  }
+}
+
+.btn {
+  margin: 0 auto;
+  width: 275px;
+  height: 70px;
+}

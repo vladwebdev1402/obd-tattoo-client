@@ -1,0 +1,16 @@
+.filterContainer {
+  display: flex;
+  align-items: center;
+  @media (max-width: 1246px) {
+    display: none;
+  }
+}
+
+.filterName {
+  font-size: 17px;
+  color: var(--txt-gray2);
+}
+
+.filter {
+  margin-left: 20px;
+}

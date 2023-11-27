@@ -1,0 +1,13 @@
+.inputCode {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--orange);
+  text-align: center;
+  padding: 5px;
+  font-size: 17px;
+  color: var(--orange);
+  font-weight: 600;
+  &:focus {
+    outline: none;
+  }
+}

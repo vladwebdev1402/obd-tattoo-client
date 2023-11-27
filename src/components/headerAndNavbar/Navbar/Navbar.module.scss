@@ -1,0 +1,31 @@
+.down {
+  margin-top: 13px;
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputContainer {
+  flex-basis: 418px;
+  margin: 0 30px;
+  flex-shrink: 1;
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.account {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .account {
+    display: flex;
+  }
+
+  .down {
+    margin-top: 0px;
+    padding-bottom: 0px;
+  }
+}

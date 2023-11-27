@@ -1,0 +1,22 @@
+.btn {
+    position: relative;
+  width: 10px;
+  height: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 1px;
+    rotate: 45deg;
+    background-color: var(--dark);
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 1px;
+    rotate: -45deg;
+    background-color: var(--dark);
+  }
+}

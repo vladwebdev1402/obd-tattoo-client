@@ -1,0 +1,66 @@
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.balance {
+  display: flex;
+  justify-content: space-between;
+}
+
+.balanceText {
+  align-self: center;
+  font-size: 15px;
+  font-family: "Jost";
+  color: white;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+
+.countItemsInBasket {
+  position: absolute;
+  display: none;
+  background-color: var(--orange);
+  padding: 3px 3px;
+  text-align: center;
+  top: -8px;
+  right: -25%;
+  font-size: 14px;
+  color: var(--txt-white);
+}
+
+.active {
+  display: block;
+}
+
+.iconBtn {
+  margin-left: 50px;
+}
+
+.basket {
+  margin-left: 0px;
+  position: relative;
+}
+@media (min-width: 992px) {
+  .iconBtn:hover {
+    path {
+      stroke: var(--orange);
+    }
+    circle {
+      stroke: var(--orange);
+    }
+  }
+
+  .basket:hover {
+    path {
+      fill: var(--orange);
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .profile,
+  .favorite {
+    display: none;
+  }
+}

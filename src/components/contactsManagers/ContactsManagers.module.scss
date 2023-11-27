@@ -1,0 +1,26 @@
+.containerManagers {
+  max-width: 804px;
+  margin-top: 50px;
+}
+
+.containerBodyManagers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    margin: 30px auto 0 auto;
+  }
+}
+.headTxt {
+  font-weight: 600;
+  font-size: 25px;
+  color: var(--dark);
+  @media (max-width: 1236px) {
+    margin-left: 20px;
+  }
+  @media (max-width: 576px) {
+    font-size: 17px;
+  }
+}

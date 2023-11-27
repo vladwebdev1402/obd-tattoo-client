@@ -1,0 +1,157 @@
+.containerBriefInfo {
+  flex: 0 1 598px;
+  margin-left: 45px;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemNameTxt {
+  font-size: 30px;
+  color: var(--dark);
+  font-weight: bold;
+  line-height: 34px;
+  max-width: 505px;
+}
+
+.priceBlock {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.currentPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+.oldPrice {
+  margin-left: 15px;
+  color: var(--gray);
+  text-decoration-line: line-through;
+  white-space: nowrap;
+}
+.availability {
+  font-size: 17px;
+  color: var(--orange);
+  margin-left: 27px;
+}
+.availabilityTxt {
+  color: var(--txt-gray2);
+}
+
+.descriptionBlock {
+  margin-top: 25px;
+  font-size: 17px;
+  color: var(--txt-gray2);
+}
+
+.btnJob {
+  margin-top: 25px;
+  font-size: 17px !important;
+}
+
+.basketUtilsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.utilsBasket {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.addInBasketBtn {
+  width: 275px;
+  height: 70px;
+  margin-left: 40px;
+}
+
+.shareBtn {
+  margin-left: 25px;
+  font-size: 17px;
+  color: var(--txt-gray2);
+}
+
+.mobileChangeCount {
+  display: none;
+  margin-left: 50px;
+}
+
+@media (max-width: 1216px) {
+  .desktopChangeCount {
+    display: none;
+  }
+
+  .mobileChangeCount {
+    display: flex;
+  }
+  .addInBasketBtn {
+    margin-left: 0;
+  }
+
+  .availability {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shareBtn {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .itemNameTxt {
+    display: none;
+  }
+
+  .currentPrice {
+    font-size: 17px;
+  }
+
+  .oldPrice {
+    font-size: 15px;
+  }
+
+  .priceBlock {
+    margin-top: 20px;
+    order: 3;
+  }
+
+  .descriptionBlock {
+    font-size: 15px;
+    margin-top: 20px;
+    order: 2;
+  }
+
+  .btnJob {
+    margin-top: 0px;
+    order: 1;
+  }
+
+  .basketUtilsContainer {
+    order: 4;
+  }
+}
+
+@media (max-width: 766px) {
+  .containerBriefInfo {
+    flex: 0 0 auto;
+    max-width: 394px;
+    margin: 20px auto 0 auto;
+    padding: 0 15px;
+  }
+  .mobileChangeCount {
+    margin-left: auto;
+  }
+
+  .addInBasketBtn {
+    margin: 0 auto;
+    width: 100%;
+  }
+}

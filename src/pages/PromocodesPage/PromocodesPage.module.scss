@@ -1,0 +1,40 @@
+.promocodesContainer {
+  max-width: 1256px;
+  min-height: 1319px;
+  margin: 50px auto 200px auto;
+  padding: 0 20px;
+  @media (max-width: 1300px) {
+    max-width: 844px;
+  }
+  @media (max-width: 768px) {
+    max-width: 768px;
+    padding: 0 0px;
+    margin: 30px auto 200px auto;
+
+    .margin {
+      margin-left: 20px;
+    }
+  }
+  @media (max-width: 650px) {
+    max-width: 392px;
+  }
+
+  @media (max-width: 576px) {
+    margin: 20px auto 200px auto;
+  }
+}
+
+.promocodesBody {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+  width: 100%;
+
+  @media (max-width: 1300px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
+}

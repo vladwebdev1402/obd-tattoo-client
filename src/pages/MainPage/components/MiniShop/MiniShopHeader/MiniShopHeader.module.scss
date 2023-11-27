@@ -1,0 +1,97 @@
+.linksList {
+  display: flex;
+  list-style: none;
+  margin-bottom: 15px;
+  justify-content: space-around;
+
+  @media (max-width: 768px) {
+    justify-content: stretch;
+
+    li {
+      margin-left: 25px;
+      &:first-child {
+        margin-left: 0px;
+      }
+    }
+  }
+}
+
+.miniShopHeader {
+  overflow: scroll;
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.linkTxt {
+  // display: block;
+  font-size: 30px;
+  color: var(--dark);
+  font-weight: 500;
+  line-height: 34.5px;
+  margin: 0px 6px;
+  white-space: nowrap;
+  font-family: Jost;
+  @media (max-width: 1246px) {
+    font-size: 25px;
+  }
+
+  @media (max-width: 992px) {
+    font-size: 20px;
+  }
+}
+.link {
+  $height: 12px;
+
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: $height;
+    background-color: var(--orange);
+    transition: 0.2s;
+    clip-path: polygon(
+      0px $height / 2,
+      $height / 2 0px,
+      $height $height / 2 - 1px,
+      calc(100% - $height) $height / 2 - 1px,
+      calc(100% - $height / 2) 0px,
+      100% $height / 2,
+      calc(100% - $height / 2) 100%,
+      calc(100% - $height) $height / 2 + 1px,
+      $height $height / 2 + 1px,
+      $height / 2 100%
+    );
+  }
+
+  @media (max-width: 992px) {
+    $height: 6px;
+  }
+
+  @media (min-width: 992px) {
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+      .linkTxt {
+        color: var(--orange);
+      }
+    }
+  }
+}
+
+.active {
+  &::after {
+    width: 100%;
+  }
+  .linkTxt {
+    color: var(--orange);
+  }
+}

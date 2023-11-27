@@ -1,0 +1,19 @@
+.marcersContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 30px;
+  left: 30px;
+}
+
+.marcer {
+  object-fit: scale-down;
+  height: 29px;
+  width: 150px;
+  background-repeat: no-repeat;
+  margin-bottom: 8px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
+}

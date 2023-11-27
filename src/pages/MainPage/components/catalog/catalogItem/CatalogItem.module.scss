@@ -1,0 +1,144 @@
+.itemName {
+  margin-left: 50px;
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.item {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  position: relative;
+  height: 350px;
+  padding-bottom: 10px;
+  background-repeat: no-repeat;
+  background-position: center calc(100% - 10px);
+
+  &:nth-child(1) {
+    flex: 1 1 494px;
+    background-position: right;
+    background-image: url(../../../../../assets/images/catalog-category/tattoo-kits.png);
+
+    .itemName {
+      width: 30px;
+    }
+    @media (max-width: 1254px) {
+      background-position: center 80px;
+      .itemName {
+        width: auto;
+      }
+    }
+    @media (max-width: 992px) {
+      flex: 1 1 279px;
+      height: 330px;
+      background-size: 279px 254px;
+      .itemName {
+        width: 180px;
+      }
+    }
+  }
+  &:nth-child(2) {
+    flex: 1 1 701px;
+    background-image: url(../../../../../assets/images/catalog-category/holders.png);
+
+    @media (max-width: 992px) {
+      background-position: center calc(100% - 10px);
+      flex: 1 1 429px;
+      height: 330px;
+      background-size: 429px 207px;
+    }
+  }
+  &:nth-child(3) {
+    flex: 1 1 342px;
+    background-image: url(../../../../../assets/images/catalog-category/tattoo-machine.png);
+    @media (max-width: 992px) {
+      background-position: center calc(100% - 10px);
+      flex: 1 1 354px;
+      height: 314px;
+      background-size: 236px 219px;
+    }
+  }
+  &:nth-child(4) {
+    flex: 1 1 493px;
+    background-image: url(../../../../../assets/images/catalog-category/wires.png);
+    background-position: right;
+    .itemName {
+      width: 30px;
+    }
+
+    @media (max-width: 992px) {
+      background-position: 107px 91px;
+      flex: 1 1 354px;
+      height: 314px;
+      background-size: 227px 223px;
+      .itemName {
+        width: 272px;
+      }
+    }
+    @media (max-width: 767px) {
+      background-position: center bottom;
+      .itemName {
+        width: 30px;
+      }
+    }
+  }
+  &:nth-child(5) {
+    flex: 1 1 341px;
+
+    background-image: url(../../../../../assets/images/catalog-category/smallpaints.png);
+    @media (max-width: 992px) and (min-width: 577px) {
+      background-image: url(../../../../../assets/images/catalog-category/paints.png);
+      background-position: center bottom;
+      flex: 1 1 728px;
+      height: 314px;
+    }
+  }
+  &:nth-child(6) {
+    flex: 1 1 495px;
+    background-image: url(../../../../../assets/images/catalog-category/power.png);
+  }
+  &:nth-child(7) {
+    flex: 1 1 341px;
+    background-image: url(../../../../../assets/images/catalog-category/tattoo-tips.png);
+  }
+  &:nth-child(8) {
+    flex: 1 1 341px;
+    background-image: url(../../../../../assets/images/catalog-category/tattoo-needles.png);
+  }
+  &:nth-child(9) {
+    flex: 1 1 340px;
+    background-image: url(../../../../../assets/images/catalog-category/consumables.png);
+  }
+  &:nth-child(10) {
+    flex: 1 1 340px;
+
+    background-image: url(../../../../../assets/images/catalog-category/accessories.png);
+  }
+  &:nth-child(11) {
+    flex: 1 1 495px;
+    margin-left: 1px;
+    background-image: url(../../../../../assets/images/catalog-category/printers.png);
+  }
+  &:nth-child(n + 6) {
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .item {
+    &:nth-child(1) {
+      height: 310px;
+    }
+    &:nth-child(2) {
+      height: 270px;
+      background-size: 280px auto;
+    }
+    &:nth-child(5) {
+      height: 261px;
+      background-size: auto 191px;
+    }
+  }
+}

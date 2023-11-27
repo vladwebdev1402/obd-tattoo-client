@@ -1,0 +1,82 @@
+.errorContainer {
+  padding-top: 160px;
+  width: 1216px;
+  height: 764px;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/images/error.png);
+  background-position: right bottom;
+  margin: 0 auto;
+  @media (max-width: 1300px) {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (max-width: 1024px) {
+    height: 498px;
+    background-size: 384px auto;
+    padding-top: 60px;
+  }
+  @media (max-width: 600px) {
+    height: 737px;
+    background-size: 283px auto;
+    background-position: center bottom;
+  }
+}
+
+.errorBody {
+  width: 519px;
+  height: 276px;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+}
+.errorHeadetTxt {
+  color: var(--orange);
+  font-size: 75px;
+  font-family: "Forum";
+  @media (max-width: 600px) {
+    font-size: 35px;
+  }
+}
+
+.errorDescTxt {
+  margin-top: 20px;
+  max-width: 430px;
+  font-size: 25px;
+  color: var(--dark);
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
+}
+
+.navigationContainer {
+  width: 100%;
+  min-height: 70px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.clipBtn {
+  width: 305px;
+  height: 70px;
+  @media (max-width: 1024px) {
+    align-items: flex-start;
+    width: 295px;
+    margin-left: -10px;
+  }
+}
+
+.lineBtn {
+  width: 172px;
+  margin-left: 30px;
+  height: 30px;
+  @media (max-width: 1024px) {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
+}

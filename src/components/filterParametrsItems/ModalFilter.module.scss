@@ -1,0 +1,44 @@
+.modalFilterContainer {
+  margin-top: 20px;
+}
+
+.filterName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark);
+  user-select: none;
+}
+
+.modalFilterHeader {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterChildren {
+  margin-top: 23px;
+  margin-left: 30px;
+}
+
+.arrowFilter {
+  width: 5px;
+  height: 5px;
+  background-color: var(--dark);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transition: 0.2s;
+}
+
+.filterBody {
+  display: none;
+}
+
+.active {
+  .modalFilterHeader .arrowFilter {
+    rotate: 180deg;
+  }
+
+  .filterBody {
+    display: block;
+  }
+}

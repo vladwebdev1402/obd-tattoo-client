@@ -1,0 +1,182 @@
+.container {
+  max-width: 804px;
+  margin-top: 50px;
+}
+
+.headTxt,
+.headInfoTxt,
+.headerTxtBasket {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.headInfoTxt {
+  margin-right: 20px;
+}
+
+.headerTxtBasket {
+  margin-bottom: 20px;
+}
+
+.containerOrder {
+  margin-top: 30px;
+  background-color: var(--white);
+}
+
+.containerOrderHead {
+  padding: 30px 45px 35px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.dataContainer,
+.dataInfoContainer,
+.lineBtnText {
+  font-size: 17px;
+}
+
+.dataContainer {
+  white-space: nowrap;
+}
+
+.dataContainerHead {
+  color: var(--txt-gray2);
+}
+
+.dataContainerValue {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.openIcon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 5px);
+    left: calc(50% - 6px);
+    width: 12px;
+    height: 10px;
+    background-color: var(--orange);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transition: 0.2s;
+  }
+}
+
+.activeIcon {
+  &::after {
+    rotate: 180deg;
+  }
+}
+
+.infoBody {
+  display: flex;
+  margin: 30px 50px 40px 50px;
+}
+
+.person {
+  margin-left: 73px;
+}
+
+.dataInfoWrapper {
+  margin-top: 22px;
+}
+
+.dataInfoContainer {
+  margin-top: 28px;
+  &:first-child {
+    margin-top: 0px;
+  }
+}
+
+.contentBasketContainer {
+  padding: 40px 50px 50px 50px;
+}
+.openInfo {
+  display: block;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+.clipBtn {
+  margin: 23px auto 30px auto;
+}
+
+@media (max-width: 768px) {
+  .containerOrderHead {
+    padding: 30px;
+  }
+  .infoBody {
+    margin: 30px 30px 40px 30px;
+  }
+
+  .contentBasketContainer {
+    padding: 30px 30px 40px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .containerOrderHead,
+  .contentBasketContainer {
+    padding: 30px 20px;
+  }
+  .infoBody {
+    margin: 30px 20px;
+  }
+  .headTxt {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 17px;
+  }
+  .headInfoTxt,
+  .headerTxtBasket {
+    font-size: 20px;
+  }
+
+  .dataContainer,
+  .dataInfoContainer,
+  .lineBtnText {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 680px) {
+  .containerOrderHead {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 10px;
+  }
+
+  .dataContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .openIcon {
+    display: none;
+  }
+
+  .footerContainer {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .infoBody {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  .person {
+    margin-left: 0;
+  }
+}

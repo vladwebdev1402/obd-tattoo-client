@@ -1,0 +1,23 @@
+.slider__wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slider__container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+  position: relative;
+}
+
+.slider__list {
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

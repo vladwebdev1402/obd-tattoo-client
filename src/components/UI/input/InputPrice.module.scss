@@ -1,0 +1,18 @@
+.inputPrice {
+  width: 83px;
+  height: 40px;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid var(--dark-orange);
+  padding: 5px;
+  font-size: 15px;
+  color: var(--dark);
+
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-outer-spin-button,
+  &:-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}

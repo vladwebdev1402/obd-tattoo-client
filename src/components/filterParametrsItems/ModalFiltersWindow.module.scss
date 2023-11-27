@@ -1,0 +1,43 @@
+.modal {
+  display: block !important;
+}
+
+.modalFiltersContainer {
+  max-width: 340px;
+  background-color: var(--white);
+  padding: 40px;
+  max-height: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: var(--dark);
+  }
+}
+
+.headModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headTxt {
+  line-height: 35px;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.radioItem {
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+

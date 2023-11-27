@@ -1,0 +1,95 @@
+.modalWrapper {
+  position: relative;
+  padding: 60px 70px 70px 70px;
+  background-color: var(--white);
+  max-width: 691px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.head {
+  font-size: 75px;
+  color: var(--orange);
+  text-align: center;
+  font-family: "Forum";
+}
+
+.numberOrder {
+  margin-top: 16px;
+  font-weight: bold;
+  color: var(--dark);
+  font-size: 25px;
+}
+
+.number {
+  color: var(--orange);
+}
+
+.helpInfo {
+  font-size: 25px;
+  margin-top: 16px;
+}
+
+.navigationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  gap: 10px;
+}
+
+.returnMainbtn {
+  width: 305px;
+  height: 70px;
+}
+
+.mobileBtnText {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .head {
+    font-size: 60px;
+  }
+  .numberOrder,
+  .helpInfo {
+    font-size: 20px;
+  }
+  .modalWrapper {
+    padding: 50px 40px 40px 40px;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 612px) {
+  .navigationContainer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 568px) {
+  .head {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .modalWrapper {
+    padding: 30px 20px 20px 20px;
+  }
+  .returnMainbtn {
+    width: 100%;
+    height: 50px;
+  }
+  .btnText {
+    display: none;
+  }
+  .mobileBtnText {
+    display: inline;
+  }
+}

@@ -1,0 +1,132 @@
+.container {
+    margin: 57px 20px 0 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .body {
+    margin-top: 28px;
+    padding-top: 15px;
+    height: 469px;
+    @media (max-width: 1400px) and (min-width: 1025px) {
+      margin: 57px 80px 0 80px;
+    }
+  }
+  
+  .watchAll {
+    align-self: flex-end;
+    font-size: 25px;
+    color: var(--dark);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .sliderContainer {
+    padding-top: 17px;
+  }
+  
+  %btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--orange);
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 5px);
+      left: calc(50% - 4px);
+      width: 11px;
+      height: 10px;
+      clip-path: polygon(0px 0px, 100% 50%, 0 100%);
+      background-color: var(--orange);
+    }
+  
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+  .btnNext {
+    @extend %btn;
+    top: 174px;
+    right: -80px;
+  }
+  .btnPrev {
+    @extend %btn;
+    top: 174px;
+    left: -80px;
+    &::after {
+      clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  
+      left: calc(50% - 5px);
+    }
+  }
+  
+  .pagination {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    @media (max-width: 992px) {
+      display: flex;
+    }
+  }
+  
+  .pagItem {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-left: 15px;
+    border: 1px solid var(--dark);
+    cursor: pointer;
+    transition: 0.2s;
+  
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  
+  .pagItemActive {
+    &::after {
+      position: absolute;
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: var(--orange);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.2s;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .pagItem {
+      margin-left: 8px;
+      width: 6px;
+      height: 6px;
+      border: none;
+      background-color: var(--gray);
+    }
+    .pagItemActive {
+      &::after {
+        background-color: var(--dark-orange);
+        width: 6px;
+        height: 6px;
+      }
+    }
+    .watchAll {
+      font-size: 15px;
+    }
+  
+    .body {
+      height: 258px;
+    }
+  
+    .sliderContainer {
+      padding-top: 0px;
+    }
+  }

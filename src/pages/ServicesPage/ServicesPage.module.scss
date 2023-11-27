@@ -1,0 +1,49 @@
+.container {
+  max-width: 1216px;
+  margin: 40px auto 150px auto;
+}
+
+.contentPage {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 804px 1fr;
+  gap: 80px 20px;
+}
+
+.servicesContainer {
+  max-width: 804px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1256px) and (min-width: 433px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .contentPage {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    max-width: 844px;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    max-width: 432px;
+  }
+  .servicesContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 432px) {
+  .margin {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

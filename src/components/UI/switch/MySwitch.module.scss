@@ -1,0 +1,24 @@
+.switch {
+  width: 34px;
+  height: 21px;
+  background-color: var(--orange);
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    top: 3px;
+    left: 2px;
+    transition: 0.2s;
+  }
+}
+
+.switchActive {
+  &::after {
+    left: calc(100% - 17px);
+  }
+}

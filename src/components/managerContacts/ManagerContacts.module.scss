@@ -1,0 +1,59 @@
+.contacts {
+}
+
+.contactContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.txtNumber {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--dark);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.urlContacts {
+  list-style: none;
+  display: flex;
+}
+
+.link {
+  margin-left: 10px;
+  &:first-child {
+    margin-left: 0px;
+  }
+}
+
+.linkTxt,
+.mailTxt {
+  color: var(--dark);
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.mailTxt {
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+.mail {
+  margin-top: 25px;
+}
+
+.personalContactContainer {
+  margin-top: 30px;
+}
+
+.companyNumber {
+  margin-left: 10px;
+  font-size: 17px;
+  color: var(--dark);
+}
+
+.callTxt {
+  margin-top: 10px;
+  color: var(--dark);
+}

@@ -1,0 +1,149 @@
+.container {
+  max-width: 100%;
+  margin-top: 120px;
+  margin-bottom: 180px;
+}
+
+.headTxt {
+  text-align: center;
+}
+
+.reviewBody {
+  margin-top: 50px;
+}
+
+.sliderContainer {
+  height: 360px;
+}
+
+.list {
+  align-items: flex-end;
+}
+
+.slideActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.notActive {
+  opacity: 30%;
+  transform: scale(0.9);
+}
+
+%btn {
+  top: calc(50% - 25px);
+  z-index: 1;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--orange);
+  background-color: var(--bg);
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 5px);
+    width: 12px;
+    height: 10px;
+    clip-path: polygon(0px 0px, 50% 100%, 100% 0);
+    background-color: var(--orange);
+  }
+
+  &:hover {
+    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+.btnPrev {
+  @extend %btn;
+  left: 200px;
+  &::after {
+    left: calc(50% - 6px);
+    rotate: 90deg;
+  }
+}
+
+.btnNext {
+  @extend %btn;
+  right: 200px;
+  &::after {
+    rotate: -90deg;
+    right: calc(50% - 6px);
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 60px auto 0 auto;
+}
+
+.pagItem {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin-left: 15px;
+  border: 1px solid var(--dark);
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.pagItemActive {
+  &::after {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: var(--orange);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+  }
+}
+
+@media (max-width: 1750px) {
+  .btnPrev {
+    left: 100px;
+  }
+
+  .btnNext {
+    right: 100px;
+  }
+}
+
+@media (max-width: 1550px) {
+  %btn {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 48px;
+  }
+  .headTxt {
+    text-align: left;
+    padding-left: 20px;
+  }
+  .container {
+    margin-top: 80px;
+  }
+  .reviewBody {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 660px) {
+  .reviewBody {
+    margin-top: 30px;
+  }
+  .container {
+    margin-top: 60px;
+  }
+  .sliderContainer {
+    height: 439px;
+  }
+}

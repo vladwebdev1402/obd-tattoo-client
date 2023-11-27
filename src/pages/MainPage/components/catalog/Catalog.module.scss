@@ -1,0 +1,28 @@
+.catalogContainer {
+  max-width: 1256px;
+  margin: 120px auto 0px auto;
+  padding: 0 20px;
+
+  @media (max-width: 992px) {
+    max-width: 804px;
+  }
+}
+
+.catalogHeader {
+  text-align: center;
+  margin-bottom: 50px;
+  @media (max-width: 992px) {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 576px) {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+}
+
+.catalogBody {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 19px;
+}

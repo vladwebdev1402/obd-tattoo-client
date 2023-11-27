@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 83px;
+  height: 93px;
+  background-color: #f5f5f5;
+  &:first-child {
+    margin-top: 0px;
+  }
+  transition: 0.1s;
+}
+
+.active {
+  border: 2px solid var(--orange);
+}
+
+.img {
+  width: 100%;
+}

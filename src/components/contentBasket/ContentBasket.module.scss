@@ -1,0 +1,173 @@
+.container {
+  max-width: 804px;
+}
+%grid {
+  display: grid;
+  grid-template-columns: 315px 1fr 1fr 1fr;
+  column-gap: 10px;
+}
+
+.divider {
+  background-color: var(--gray);
+  margin-top: 20px;
+}
+
+.tableRow {
+  @extend %grid;
+  position: relative;
+  margin-top: 20px;
+}
+.tableHeader {
+  @extend %grid;
+  font-size: 15px;
+  color: var(--dark);
+}
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 103px;
+  height: 103px;
+  background-color: var(--white);
+  flex-shrink: 0;
+}
+.itemImg {
+  width: 100%;
+}
+
+.itemTxt,
+.itemPrice {
+  font-size: 17px;
+}
+
+.itemImgNameContainer {
+  display: flex;
+  align-items: center;
+  height: 103px;
+}
+.tableHeadTxt,
+.itemTxt {
+  white-space: nowrap;
+  align-self: center;
+  justify-self: center;
+}
+.itemTxt {
+  color: var(--dark);
+}
+
+.itemNameContainer {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemPrice {
+  display: none;
+  font-size: 15px;
+  color: var(--txt-gray2);
+}
+
+.itemName {
+  white-space: wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.closeBtn {
+  position: absolute;
+  cursor: pointer;
+  width: 11px;
+  height: 100%;
+  right: 5px;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 1px;
+    background-color: var(--dark);
+    rotate: 45deg;
+  }
+  &::before {
+    rotate: -45deg;
+  }
+}
+.itemDivider {
+  display: none;
+  background-color: var(--gray);
+}
+.hint {
+  display: none;
+}
+
+@media (max-width: 769px) and (min-width: 730px) {
+  .changeCountBtn div:nth-child(2) {
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .itemTxt,
+  .itemPrice {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 720px) {
+  .itemPrice {
+    display: inline;
+  }
+  .itemNameContainer {
+    height: 100%;
+    padding-right: 10px;
+  }
+  .itemImgNameContainer {
+    height: 80px;
+  }
+  .imgContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .tablePrice {
+    display: none;
+  }
+
+  .tableRow {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 400px;
+    row-gap: 20px;
+    align-self: center;
+    justify-content: space-between;
+  }
+  .tableContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tableHeader,
+  .divider {
+    display: none;
+  }
+
+  .hint {
+    display: inline;
+  }
+  .closeBtn {
+    height: 40px;
+    top: 0px;
+    right: 0px;
+  }
+  .itemDivider {
+    display: block;
+    width: 100%;
+  }
+
+  .tableRow:last-child .itemDivider {
+    display: none;
+  }
+}

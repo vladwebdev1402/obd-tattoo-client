@@ -1,0 +1,17 @@
+.containerContacts {
+  max-width: 1216px;
+  margin: 50px auto 200px auto;
+  @media (max-width: 768px) {
+    margin: 30px auto 200px auto;
+  }
+
+  @media (max-width: 576px) {
+    margin: 20px auto 200px auto;
+  }
+}
+
+@media (max-width: 1236px) {
+  .margin {
+    margin-left: 20px;
+  }
+}
