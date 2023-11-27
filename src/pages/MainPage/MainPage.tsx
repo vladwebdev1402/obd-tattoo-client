@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import HeaderSlider from "../../components/HeaderSlider/HeaderSlider";
 import AboutCompany from "./components/aboutCompany/AboutCompany";
 import MiniShop from "./components/MiniShop/MiniShop";
 import Catalog from "./components/catalog/Catalog";
 import Banners from "./components/banners/Banners";
 import Brands from "./components/brands/Brands";
 import Reviews from "./components/reviews/Reviews";
+import HeaderSlider from "./components/HeaderSlider/HeaderSlider";
 
 const MainPage = () => {
   useEffect(() => {

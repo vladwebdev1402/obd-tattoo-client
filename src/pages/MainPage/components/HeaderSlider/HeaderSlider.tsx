@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./Swiper.module.scss";
 import Slide from "./Slide";
 import Slider from "@UI/Slider/Slider";

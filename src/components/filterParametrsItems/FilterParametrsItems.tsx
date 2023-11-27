@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { IFiltersParametrs } from "@/types/FilterParametrs";
 import MySelect from "@UI/select/MySelect";
 import styles from "./FilterParametrsItems.module.scss";
-import filterIcon from "@/components/assets/staticIcons/filter.svg";
+import filterIcon from "@/assets/staticIcons/filter.svg";
 import MySwitch from "@UI/switch/MySwitch";
 import Filter from "./Filter";
 import InputPrice from "@UI/input/InputPrice";

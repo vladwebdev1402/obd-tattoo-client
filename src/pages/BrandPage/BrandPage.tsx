@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import BrandImgHeader from "../../components/brandImgHeader/BrandImgHeader";
-import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
-import FilterCategoryCatalog from "../../components/filterCategoryCatalog/FilterCategoryCatalog";
-import ShopItem from "../../components/ShopItem/ShopItem";
-import ClipButton from "../../components/UI/button/clipButton/ClipButton";
-import { brands } from "../../data/catalogCategory";
-import { minishopData } from "../../data/minishopData";
-import { ICategory } from "../../types/category";
-import { IShopItem } from "../../types/shopItem";
+import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
+import FilterCategoryCatalog from "@/components/filterCategoryCatalog/FilterCategoryCatalog";
+import ShopItem from "@/components/ShopItem/ShopItem";
+import ClipButton from "@/components/UI/button/clipButton/ClipButton";
+import { brands } from "@/data/catalogCategory";
+import { minishopData } from "@/data/minishopData";
+import { ICategory } from "@/types/category";
+import { IShopItem } from "@/types/shopItem";
 import st from "./BrandPage.module.scss";
-import ItemsContainer from "../../components/UI/containers/ItemsContainer/ItemsContainer";
+import ItemsContainer from "@/components/UI/containers/ItemsContainer/ItemsContainer";
+import BrandImgHeader from "./components/brandImgHeader/BrandImgHeader";
 const BrandPage = () => {
   const params = useParams<{ id: string }>();
   const [brand, setBrand] = useState<ICategory>();

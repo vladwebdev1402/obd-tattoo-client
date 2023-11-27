@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
-import ContainerBriefInfoProduct from "../../components/containerBriefInfoProduct/ContainerBriefInfoProduct";
-import ContainerImagesProduct from "../../components/containerImagesProduct/ContainerImagesProduct";
-import { minishopData } from "../../data/minishopData";
-import { IShopItem } from "../../types/shopItem";
+import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
+import { minishopData } from "@/data/minishopData";
+import { IShopItem } from "@/types/shopItem";
 import st from "./ItemPage.module.scss";
-import SubBlockItems from "../../components/SubBlockItems/SubBlockItems";
+import SubBlockItems from "@/components/SubBlockItems/SubBlockItems";
+import ContainerImagesProduct from "./components/containerImagesProduct/ContainerImagesProduct";
+import ContainerBriefInfoProduct from "./components/containerBriefInfoProduct/ContainerBriefInfoProduct";
 const ItemPage: FC = () => {
   const params = useParams<{ id: string }>();
   const [item, setItem] = useState<IShopItem>();
