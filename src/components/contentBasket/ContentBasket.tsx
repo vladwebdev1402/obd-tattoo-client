@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import BasketRow from "./BasketRow";
 import st from "./ContentBasket.module.scss";
-import { IBasket } from "@/store/reducers/basketReducers";
+import IBasket from "@/types/IBasket";
 
 interface Props {
   items: IBasket[];

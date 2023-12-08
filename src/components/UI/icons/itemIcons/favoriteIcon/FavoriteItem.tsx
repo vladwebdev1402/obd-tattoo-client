@@ -1,13 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 
 import styles from "./icon.module.scss";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import {
-  IFavorite,
-  IFavoriteReducer,
-  itemInFavorites,
-} from "../../../../../store/reducers/favoritesReducer";
 
 interface FavoriteIconProps {
   className?: string;
@@ -15,31 +8,14 @@ interface FavoriteIconProps {
 }
 
 const FavoriteItem: FC<FavoriteIconProps> = ({ className = "", id }) => {
-  const dispatch = useDispatch();
-  const favorites = useSelector<IFavoriteReducer>((state) => state.favorites);
-  const [isFavorite, setFavorite] = useState(itemInFavorites(favorites, id));
-  const click = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-
-    if (isFavorite) {
-      dispatch({ type: "DELETE_FAVORITE", payload: id });
-    } else {
-      dispatch({ type: "ADD_FAVORITE", payload: id });
-    }
-  };
-
-  useEffect(() => {
-    if (itemInFavorites(favorites, id)) {
-      setFavorite(true);
-    } else setFavorite(false);
-  }, [isFavorite, favorites]);
+  const [isFavorite, setFavorite] = useState(false);
 
   return (
     <div
       className={`icon ${styles.icon} ${className} ${
         isFavorite ? styles.active : ""
       } ${styles.favorite}`}
-      onClick={click}
+      onClick={() => {}}
     >
       <svg
         width="20"

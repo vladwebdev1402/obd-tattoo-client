@@ -1,30 +1,15 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./MyInput.module.scss";
 
-interface MyInputProps {
+interface MyInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   title: string;
-  value: string;
-  placeholder: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
 }
 
-const MyInput: FC<MyInputProps> = ({
-  title,
-  placeholder,
-  onChange,
-  value,
-  className = "",
-}) => {
+const MyInput: FC<MyInputProps> = ({ title, className = "", ...props }) => {
   return (
     <div className={`${styles.inputContainer} ${className}`}>
       <div className={styles.inputName}>{title}</div>
-      <input
-        value={value}
-        onChange={onChange}
-        className={styles.input}
-        placeholder={placeholder}
-      />
+      <input className={styles.input} {...props} />
     </div>
   );
 };

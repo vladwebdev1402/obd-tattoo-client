@@ -2,11 +2,11 @@ import React, { FC, useEffect, useState } from "react";
 import styles from "./MiniShop.module.scss";
 import MiniShopFooter from "./MiniShopFooter/MiniShopFooter";
 import MiniShopHeader from "./MiniShopHeader/MiniShopHeader";
-import { IShopItem } from "../../../../types/shopItem";
-import { minishopData } from "../../../../data/minishopData";
-import Slider from "../../../../components/UI/Slider/Slider";
-import ItemsContainer from "../../../../components/UI/containers/ItemsContainer/ItemsContainer";
-import ShopItem from "../../../../components/ShopItem/ShopItem";
+import { IShopItem } from "@/types/shopItem";
+import { minishopData } from "@/data/minishopData";
+import Slider from "@/components/UI/Slider/Slider";
+import ItemsContainer from "@/components/UI/containers/ItemsContainer/ItemsContainer";
+import ShopItem from "@/components/ShopItem/ShopItem";
 const MiniShop: FC = () => {
   const [items, setItems] = useState<IShopItem[]>([]);
   const [currentCategory, setCurrentCategory] = useState("new");
@@ -21,6 +21,10 @@ const MiniShop: FC = () => {
         )
       );
   }, [currentCategory]);
+
+  useEffect(() => {
+    // ItemStore.getAll();
+  }, []);
 
   return (
     <section className={styles.miniShopContainer}>

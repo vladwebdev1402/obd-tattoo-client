@@ -1,4 +1,4 @@
-import { IBasket } from "../store/reducers/basketReducers";
+import IBasket from "./IBasket";
 import { IContactPerson } from "./contactPerson";
 
 export interface IProductOrder {
