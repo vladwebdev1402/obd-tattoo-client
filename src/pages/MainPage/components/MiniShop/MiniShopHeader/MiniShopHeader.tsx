@@ -12,9 +12,9 @@ const MiniShopHeader: FC<Props> = ({ setCurrentCategory, currentCategory }) => {
         <li>
           <MiniShopHeaderLink
             onClick={() => {
-              setCurrentCategory("new");
+              setCurrentCategory("news");
             }}
-            active={currentCategory == "new"}
+            active={currentCategory == "news"}
           >
             Новые поступления
           </MiniShopHeaderLink>

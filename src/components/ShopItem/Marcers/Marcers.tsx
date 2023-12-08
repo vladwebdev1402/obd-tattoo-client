@@ -20,11 +20,14 @@ const Marcers: FC<Props> = ({ marcers, className = "" }) => {
   };
   return (
     <div className={`${st.marcersContainer} ${className}`}>
-      {Object.keys(marcers).map((key, idx) => (
-        <div className={st.marcer} key={idx}>
-          <img src={marcersImg[key]} />
-        </div>
-      ))}
+      {Object.keys(marcers).map(
+        (key, idx) =>
+          marcers[key] && (
+            <div className={st.marcer} key={idx}>
+              <img src={marcersImg[key]} />
+            </div>
+          )
+      )}
     </div>
   );
 };

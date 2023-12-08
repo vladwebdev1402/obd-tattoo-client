@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 import FiltersBtnCatalogPage from "../../components/filtersBtnCatalogPage/FiltersBtnCatalogPage";
 import styles from "./CatalogPage.module.scss";
-import { minishopData } from "../../data/minishopData";
 import ShopItem from "../../components/ShopItem/ShopItem";
 import ClipButton from "../../components/UI/button/clipButton/ClipButton";
 import { pathnames } from "../../data/pathnames";
@@ -40,10 +39,6 @@ const CatalogPage = () => {
   }, []);
 
   useEffect(() => {
-    setItems(minishopData.filter((item) => item.type === params.type));
-  }, [params]);
-
-  useEffect(() => {
     const itemsWithFilter = items.filter(
       (item) =>
         item.price <= Number(filters.price.maxPrice) &&
@@ -76,7 +71,7 @@ const CatalogPage = () => {
       <FilterParametrsItems filters={filters} setFilters={setFilters} />
       <ItemsContainer>
         {filtersItem.length ? (
-          filtersItem.map((item) => <ShopItem item={item} key={item.id} />)
+          filtersItem.map((item) => <ShopItem item={item} key={item._id} />)
         ) : (
           <h1>Товары данного типа отсутствуют</h1>
         )}

@@ -15,7 +15,7 @@ const BasketRow: FC<Props> = ({ item, isOrder, count }) => {
     <div className={st.tableRow}>
       <div className={st.itemImgNameContainer}>
         <div className={st.imgContainer}>
-          <img className={st.itemImg} src={item.img.img0} />
+          <img className={st.itemImg} src={item.image} />
         </div>
 
         <div className={st.itemNameContainer}>

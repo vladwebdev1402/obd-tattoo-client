@@ -5,7 +5,6 @@ import FilterCategoryCatalog from "@/components/filterCategoryCatalog/FilterCate
 import ShopItem from "@/components/ShopItem/ShopItem";
 import ClipButton from "@/components/UI/button/clipButton/ClipButton";
 import { brands } from "@/data/catalogCategory";
-import { minishopData } from "@/data/minishopData";
 import { ICategory } from "@/types/category";
 import { IShopItem } from "@/types/shopItem";
 import st from "./BrandPage.module.scss";
@@ -25,12 +24,11 @@ const BrandPage = () => {
   useEffect(() => {
     const brand = brands.filter((brand) => brand.id === Number(params.id))[0];
     setBrand(brand);
-    setItems(minishopData.filter((item) => item.brand === brand.name));
   }, [params]);
 
   useEffect(() => {
     if (currentType == "all") setFilterItems(items);
-    else setFilterItems(items.filter((item) => item.type === currentType));
+    else setFilterItems(items.filter((item) => item.category === currentType));
   }, [currentType, items]);
   return (
     <div className={st.container}>
@@ -43,7 +41,7 @@ const BrandPage = () => {
       />
       <ItemsContainer>
         {filterItems.length ? (
-          filterItems.map((item) => <ShopItem item={item} key={item.id} />)
+          filterItems.map((item) => <ShopItem item={item} key={item._id} />)
         ) : (
           <h1>Товары этой категории от данного бренда отсутствуют</h1>
         )}

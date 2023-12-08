@@ -2,29 +2,24 @@ import React, { FC, useEffect, useState } from "react";
 import styles from "./MiniShop.module.scss";
 import MiniShopFooter from "./MiniShopFooter/MiniShopFooter";
 import MiniShopHeader from "./MiniShopHeader/MiniShopHeader";
-import { IShopItem } from "@/types/shopItem";
-import { minishopData } from "@/data/minishopData";
 import Slider from "@/components/UI/Slider/Slider";
 import ItemsContainer from "@/components/UI/containers/ItemsContainer/ItemsContainer";
 import ShopItem from "@/components/ShopItem/ShopItem";
-const MiniShop: FC = () => {
-  const [items, setItems] = useState<IShopItem[]>([]);
-  const [currentCategory, setCurrentCategory] = useState("new");
+import { ItemStore } from "@/store";
+import { observer } from "mobx-react-lite";
+const MiniShop: FC = observer(() => {
+  const [currentCategory, setCurrentCategory] = useState("news");
   const [swipe, setSwipe] = useState(false);
 
   useEffect(() => {
-    if (currentCategory == "popular") setItems(minishopData);
-    else
-      setItems(
-        minishopData.filter((item) =>
-          Object.keys(item.marcers || {}).includes(currentCategory)
-        )
-      );
+    if (currentCategory === "news")
+      ItemStore.getItems({ news: true, limit: 8 });
+    if (currentCategory === "promotion")
+      ItemStore.getItems({ promotion: true, limit: 8 });
+    if (currentCategory === "popular")
+      ItemStore.getItems({ news: true, limit: 8 });
+    if (currentCategory === "hot") ItemStore.getItems({ hot: true, limit: 8 });
   }, [currentCategory]);
-
-  useEffect(() => {
-    // ItemStore.getAll();
-  }, []);
 
   return (
     <section className={styles.miniShopContainer}>
@@ -43,20 +38,20 @@ const MiniShop: FC = () => {
           freeMode={true}
           transition={1000}
         >
-          {items.map((item) => (
-            <ShopItem swipe={swipe} key={item.id} item={item} />
+          {ItemStore.data.map((item) => (
+            <ShopItem swipe={swipe} key={item._id} item={item} />
           ))}
         </Slider>
       </div>
       <ItemsContainer className={styles.miniShopItems}>
-        {items.map((item) => (
-          <ShopItem key={item.id} item={item} />
+        {ItemStore.data.map((item) => (
+          <ShopItem key={item._id} item={item} />
         ))}
       </ItemsContainer>
 
       <MiniShopFooter />
     </section>
   );
-};
+});
 
 export default MiniShop;

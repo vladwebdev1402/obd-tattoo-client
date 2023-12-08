@@ -41,7 +41,7 @@ const SubBlockItems: FC<Props> = ({ watchAll, items, title }) => {
             <ShopItem
               swipe={swipe}
               item={item}
-              key={item.id}
+              key={item._id}
               smallItem={true}
             />
           ))}

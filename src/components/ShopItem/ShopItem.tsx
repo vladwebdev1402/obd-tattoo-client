@@ -1,12 +1,10 @@
 import React, { FC, useState } from "react";
 import { IShopItem } from "@/types/shopItem";
 import FavoriteItem from "@UI/icons/itemIcons/favoriteIcon/FavoriteItem";
-import ShopItemSwiper from "./ShopItemSwiper/ShopItemSwiper";
 import styles from "./ShopItem.module.scss";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import Marcers from "./Marcers/Marcers";
 import { useNavigate } from "react-router-dom";
-import MyChecked from "@UI/checked/MyChecked";
 
 interface ShopItemProps {
   item: IShopItem;
@@ -41,13 +39,13 @@ const ShopItem: FC<ShopItemProps> = ({
       <div
         className={styles.itemContainer}
         onClick={() => {
-          if (!swipe) navigate(`/tattoo-react/catalog/${item.type}/${item.id}`);
+          if (!swipe)
+            navigate(`/tattoo-react/catalog/${item.category}/${item._id}`);
         }}
       >
-        <ShopItemSwiper
-          images={item.img}
-          className={smallItem ? styles.smallImg : ""}
-        />
+        <div className={styles.item__img}>
+          <img src={item.image} alt="" draggable={false} />
+        </div>
         <div className={styles.itemName}>{item.name}</div>
         <div className={styles.itemPrice}>
           {item.price.toLocaleString("ru-RU")} ₽
@@ -83,28 +81,12 @@ const ShopItem: FC<ShopItemProps> = ({
             </div>
           )}
         </div>
-        {!checkbox && (
-          <Marcers
-            marcers={item.marcers || {}}
-            className={smallItem ? styles.marcersSmall : ""}
-          />
-        )}
+        <Marcers
+          marcers={item.marcers || {}}
+          className={smallItem ? styles.marcersSmall : ""}
+        />
 
-        {checkbox && (
-          <div
-            className={styles.checkboxContainer}
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-              e.stopPropagation();
-            }}
-          >
-            <MyChecked
-              className={styles.checkbox}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {}}
-              checked={true}
-            />
-          </div>
-        )}
-        <FavoriteItem id={item.id} className={styles.favorite} />
+        <FavoriteItem id={item._id} className={styles.favorite} />
       </div>
     </div>
   );

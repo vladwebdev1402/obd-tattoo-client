@@ -157,6 +157,22 @@
   color: var(--gray);
 }
 
+.item__img {
+  object-fit: fill;
+  background-color: #f4f4f4;
+  width: 289px;
+  // height: 228px;
+  @media screen and (max-width: 992px) {
+    width: 229px;
+  }
+  @media screen and (max-width: 576px) {
+    width: 280px;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 992px) and (min-width: 577px) {
   .itemContainer {
     margin-top: 0px;
