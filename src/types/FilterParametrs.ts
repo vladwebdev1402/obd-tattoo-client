@@ -7,6 +7,5 @@ export interface IFiltersParametrs {
     price: IPrice,
     inStock: boolean,
     sortOptions: { name: string; isActive: boolean }[],
-    typeOptions: { name: string; isActive: boolean }[],
 
 }

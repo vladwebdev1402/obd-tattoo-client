@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Children, FC } from "react";
 import st from "./ItemsContainer.module.scss";
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   error: string;
@@ -24,7 +24,9 @@ const ItemsContainer: FC<Props> = ({
       {error && isLoadingComplete && (
         <div className={st.container__error}>{error}</div>
       )}
-      {!error && isLoadingComplete && children}
+      {!error &&
+        (isLoadingComplete || Children.toArray(children).length > 0) &&
+        children}
     </div>
   );
 };

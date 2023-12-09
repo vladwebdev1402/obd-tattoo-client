@@ -22,6 +22,30 @@ class ItemStore extends BaseStore<IShopItem> {
         this.isLoadingComplete = true;
     }
   };
+
+  getItemsWithFilter = (filters: {name: string, isActive: boolean}[] ): IShopItem[] => {
+    const filter = filters.filter(f => f.isActive === true)[0];
+    const data = this.data.map(item => item);
+    if (filter.name === "По алфавиту") {
+      return data.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        else return 1;
+      });
+    }
+    else if (filter.name === "Дорогие") {
+      return data.sort((a, b) => {
+        if (a.price < b.price) return 1;
+        else return -1;
+      });
+    }
+    else if (filter.name === "Дешёвые") {
+      return data.sort((a, b) => {
+        if (a.price > b.price) return 1;
+        else return -1;
+      });
+    }
+    return this.data
+  } 
 }
 
 export default new ItemStore();

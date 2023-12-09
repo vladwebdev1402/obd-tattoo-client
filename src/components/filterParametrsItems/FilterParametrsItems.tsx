@@ -63,11 +63,6 @@ const FilterParametrsItems: FC<Props> = ({ filters, setFilters }) => {
     setFilters({ ...filters, sortOptions: options });
   };
 
-  const setTypeItemSelect = (nameOption: string) => {
-    const options = zeroingOptions(filters.typeOptions, nameOption);
-    setFilters({ ...filters, typeOptions: options });
-  };
-
   const setSwitch = () => {
     setFilters({ ...filters, inStock: !filters.inStock });
   };
@@ -104,7 +99,6 @@ const FilterParametrsItems: FC<Props> = ({ filters, setFilters }) => {
           changeMax={changeMaxPrice}
           changeMin={changeMinPrice}
           changeSort={setSortingSelect}
-          changeType={setTypeItemSelect}
           filters={filters}
           setSwitch={setSwitch}
         />

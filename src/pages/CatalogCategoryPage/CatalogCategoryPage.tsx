@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
-import FiltersBtnCatalogPage from "../../components/filtersBtnCatalogPage/FiltersBtnCatalogPage";
 import styles from "./CatalogPage.module.scss";
 import ShopItem from "../../components/ShopItem/ShopItem";
 import ClipButton from "../../components/UI/button/clipButton/ClipButton";
-import { pathnames } from "../../data/pathnames";
 import FilterParametrsItems from "../../components/filterParametrsItems/FilterParametrsItems";
 import { useParams } from "react-router-dom";
 import { IFiltersParametrs } from "../../types/FilterParametrs";
-import { IShopItem } from "../../types/shopItem";
 import ItemsContainer from "../../components/UI/containers/ItemsContainer/ItemsContainer";
-import { ItemStore } from "@/store";
+import { CategoryStore, ItemStore } from "@/store";
+import { observer } from "mobx-react-lite";
+import { IItemParams } from "@/types/itemParamsApi";
 
 interface CategoryPage {
-  type: string;
+  id: string;
   [key: string]: string;
 }
-const CatalogPage = () => {
+const CatalogPage = observer(() => {
   const params = useParams<CategoryPage>();
-  const [items, setItems] = useState<IShopItem[]>([]);
-  const [filtersItem, setFiltersItem] = useState<IShopItem[]>([]);
+  const category = CategoryStore.data.filter((c) => c._id === params.id)[0]
+    ? CategoryStore.data.filter((c) => c._id === params.id)[0].name
+    : "";
   const [filters, setFilters] = useState<IFiltersParametrs>({
     price: { maxPrice: "999999", minPrice: "0" },
     inStock: false,
@@ -29,10 +29,6 @@ const CatalogPage = () => {
       { name: "Дешёвые", isActive: false },
       { name: "Дорогие", isActive: false },
     ],
-    typeOptions: [
-      { name: "Роторные", isActive: true },
-      { name: "Индукционные", isActive: false },
-    ],
   });
 
   useEffect(() => {
@@ -40,60 +36,38 @@ const CatalogPage = () => {
   }, []);
 
   useEffect(() => {
-    const itemsWithFilter = items.filter(
-      (item) =>
-        item.price <= Number(filters.price.maxPrice) &&
-        item.price >= Number(filters.price.minPrice) &&
-        (!filters.inStock || (filters.inStock && item.count > 0))
-    );
-    filters.sortOptions.forEach((filter) => {
-      if (filter.isActive) {
-        if (filter.name === "Дешёвые")
-          setFiltersItem(itemsWithFilter.sort((a, b) => a.price - b.price));
-        if (filter.name === "Дорогие")
-          setFiltersItem(itemsWithFilter.sort((a, b) => b.price - a.price));
-        if (filter.name === "По алфавиту")
-          setFiltersItem(
-            itemsWithFilter.sort((a, b) => {
-              if (a.name > b.name) return 1;
-              else return -1;
-            })
-          );
-      }
-    });
-    setFiltersItem(itemsWithFilter);
-  }, [items, filters]);
+    const query: IItemParams = {
+      category: params.id,
+      startPrice: Number(filters.price.minPrice),
+      endPrice: Number(filters.price.maxPrice),
+    };
+
+    if (filters.inStock) query.no = false;
+
+    ItemStore.getItems(query);
+  }, [filters, params]);
 
   return (
     <div className={styles.catalogContainer}>
       <Breadcrumbs />
-      <h1>{pathnames[params.type || ""]}</h1>
-      <FiltersBtnCatalogPage />
+      <h1>{category}</h1>
       <FilterParametrsItems filters={filters} setFilters={setFilters} />
       <ItemsContainer
         error={ItemStore.error}
         isLoadingComplete={ItemStore.isLoadingComplete}
       >
-        {filtersItem.length ? (
-          filtersItem.map((item) => <ShopItem item={item} key={item._id} />)
-        ) : (
-          <h1>Товары данного типа отсутствуют</h1>
-        )}
+        {ItemStore.getItemsWithFilter(filters.sortOptions).map((item) => (
+          <ShopItem key={item._id} item={item} />
+        ))}
       </ItemsContainer>
 
-      {items.length !== 0 && (
-        <ClipButton
-          className={styles.btn}
-          theme="light"
-          onClick={() => {
-            console.log(filtersItem);
-          }}
-        >
+      {ItemStore.data.length !== 0 && ItemStore.data.length % 8 === 0 && (
+        <ClipButton onClick={() => {}} className={styles.btn} theme="light">
           Показать ещё
         </ClipButton>
       )}
     </div>
   );
-};
+});
 
 export default CatalogPage;

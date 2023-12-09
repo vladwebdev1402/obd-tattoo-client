@@ -14,7 +14,6 @@ interface Props {
   changeMin: (e: React.ChangeEvent<HTMLInputElement>) => void;
   changeMax: (e: React.ChangeEvent<HTMLInputElement>) => void;
   changeSort: (nameOption: string) => void;
-  changeType: (nameOption: string) => void;
   setSwitch: () => void;
 }
 
@@ -24,7 +23,6 @@ const ModalFilters: FC<Props> = ({
   changeMin,
   changeMax,
   changeSort,
-  changeType,
   setSwitch,
 }) => {
   return (
@@ -55,19 +53,7 @@ const ModalFilters: FC<Props> = ({
             </div>
           ))}
         </ModalFilter>
-        <ModalFilter name="Тип машинки">
-          {filters.typeOptions.map((option) => (
-            <div key={option.name} className={st.radioItem}>
-              <MyRadio
-                onChange={() => {
-                  changeType(option.name);
-                }}
-                title={option.name}
-                checked={option.isActive}
-              />
-            </div>
-          ))}
-        </ModalFilter>
+
         <ModalFilter name="Только в наличии" inStock={true}>
           <MySwitch active={filters.inStock} setState={setSwitch} />
         </ModalFilter>
