@@ -13,12 +13,13 @@ const MiniShop: FC = observer(() => {
 
   useEffect(() => {
     if (currentCategory === "news")
-      ItemStore.getItems({ news: true, limit: 8 });
+      ItemStore.getItems({ news: true, no: false, limit: 8 });
     if (currentCategory === "promotion")
-      ItemStore.getItems({ promotion: true, limit: 8 });
+      ItemStore.getItems({ promotion: true, no: false, limit: 8 });
     if (currentCategory === "popular")
-      ItemStore.getItems({ news: true, limit: 8 });
-    if (currentCategory === "hot") ItemStore.getItems({ hot: true, limit: 8 });
+      ItemStore.getItems({ news: true, no: false, limit: 8 });
+    if (currentCategory === "hot")
+      ItemStore.getItems({ hot: true, no: false, limit: 8 });
   }, [currentCategory]);
 
   return (
@@ -43,12 +44,15 @@ const MiniShop: FC = observer(() => {
           ))}
         </Slider>
       </div>
-      <ItemsContainer className={styles.miniShopItems}>
+      <ItemsContainer
+        className={styles.miniShopItems}
+        error={ItemStore.error}
+        isLoadingComplete={ItemStore.isLoadingComplete}
+      >
         {ItemStore.data.map((item) => (
           <ShopItem key={item._id} item={item} />
         ))}
       </ItemsContainer>
-
       <MiniShopFooter />
     </section>
   );

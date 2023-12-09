@@ -10,6 +10,7 @@ import { IShopItem } from "@/types/shopItem";
 import st from "./BrandPage.module.scss";
 import ItemsContainer from "@/components/UI/containers/ItemsContainer/ItemsContainer";
 import BrandImgHeader from "./components/brandImgHeader/BrandImgHeader";
+import { ItemStore } from "@/store";
 const BrandPage = () => {
   const params = useParams<{ id: string }>();
   const [brand, setBrand] = useState<ICategory>();
@@ -39,7 +40,10 @@ const BrandPage = () => {
         currentType={currentType}
         all={true}
       />
-      <ItemsContainer>
+      <ItemsContainer
+        error={ItemStore.error}
+        isLoadingComplete={ItemStore.isLoadingComplete}
+      >
         {filterItems.length ? (
           filterItems.map((item) => <ShopItem item={item} key={item._id} />)
         ) : (

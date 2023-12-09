@@ -18,7 +18,10 @@ const CatalogPage = () => {
     <div className={st.container}>
       <Breadcrumbs />
       <FilterCategoryCatalog navigate={onClick} />
-      <ItemsContainer>
+      <ItemsContainer
+        error={ItemStore.error}
+        isLoadingComplete={ItemStore.isLoadingComplete}
+      >
         {ItemStore.data.map((item) => (
           <ShopItem item={item} key={item._id} />
         ))}
