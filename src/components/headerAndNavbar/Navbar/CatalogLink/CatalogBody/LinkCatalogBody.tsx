@@ -2,8 +2,7 @@ import React, { FC, useState } from "react";
 import CategoryContainer from "./CategoryContainer";
 import CategoryLink from "./CategoryLink";
 import styles from "./LinkCatalogBody.module.scss";
-import { brands, category } from "../../../../../data/catalogCategory";
-import { CategoryStore } from "@/store";
+import { BrandStore, CategoryStore } from "@/store";
 
 interface Props {
   isVisible: boolean;
@@ -30,7 +29,11 @@ const LinkCatalogBody: FC<Props> = ({ isVisible }) => {
         />
       </div>
       <div className="horizontal-divider"></div>
-      <CategoryContainer categorys={CategoryStore.data} brands={isBrands} />
+      <CategoryContainer
+        categorys={CategoryStore.data}
+        brands={BrandStore.data}
+        isBrands={isBrands}
+      />
     </div>
   );
 };

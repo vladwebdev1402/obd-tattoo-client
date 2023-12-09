@@ -5,9 +5,10 @@ import MyLink from "../LinkRow/MyLink";
 import Search from "../Seacrh/Search";
 import { useStopScroll } from "@/hooks/useStopScroll";
 import BurgerIcon from "@UI/icons/headerAndNavIcons/BurgerIcon";
-import { category } from "@/data/catalogCategory";
 import RightFooter from "@/components/Footer/RightFooter/RightFooter";
-const BurgerMenu: FC = () => {
+import { CategoryStore } from "@/store";
+import { observer } from "mobx-react-lite";
+const BurgerMenu: FC = observer(() => {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
   const [isActiveCatalog, setIsActiveCatalog] = useState(false);
   const clickMenu = () => {
@@ -46,10 +47,10 @@ const BurgerMenu: FC = () => {
               </div>
 
               <div className={styles.categorysBody}>
-                {category.map((category) => (
+                {CategoryStore.data.map((category) => (
                   <Link
-                    key={category.id}
-                    to={`/tattoo-react/catalog/${category.link}`}
+                    key={category._id}
+                    to={`/tattoo-react/catalog/${category._id}`}
                     className={styles.linkCategory}
                     onClick={() => {
                       setIsActiveMenu(!isActiveMenu);
@@ -72,12 +73,6 @@ const BurgerMenu: FC = () => {
               </li>
               <li className={styles.linkLi}>
                 <MyLink name={"Скидки"} to="/tattoo-react/discount" />
-              </li>
-              <li className={styles.linkLi}>
-                <MyLink name={"Помощь"} to="/tattoo-react/help" />
-              </li>
-              <li className={styles.linkLi}>
-                <MyLink name={"О нас"} to="/tattoo-react/about" />
               </li>
               <li className={styles.linkLi}>
                 <MyLink name={"Контакты"} to="/tattoo-react/contacts" />
@@ -104,6 +99,6 @@ const BurgerMenu: FC = () => {
       </div>
     </>
   );
-};
+});
 
 export default BurgerMenu;

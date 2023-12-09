@@ -1,3 +1,4 @@
 import { CategoryApi } from "./CategoryApi/CategoryApi";
 import { ItemApi } from "./ItemApi/ItemApi";
-export {ItemApi, CategoryApi}
+import { BrandApi } from "./BrandApi/BrandApi";
+export {ItemApi, CategoryApi, BrandApi}
