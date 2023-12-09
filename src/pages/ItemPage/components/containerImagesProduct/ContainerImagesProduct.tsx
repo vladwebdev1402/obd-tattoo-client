@@ -13,13 +13,11 @@ const ContainerImagesProduct: FC<Props> = ({ image, marcers, id }) => {
   const [activeIdx, setActiveIdx] = useState<number>(0);
 
   return (
-    <div className={st.containerImages}>
-      <div className={st.desktopContainer}>
-        <div className={st.currentImage}>
-          <Marcers marcers={marcers} />
-          <FavoriteItem id={id} className={st.favorite} />
-          <img className={st.image} src={image} />
-        </div>
+    <div className={st.container}>
+      <div className={st.container__body}>
+        <Marcers marcers={marcers} />
+        <FavoriteItem id={id} className={st.favorite} />
+        <img className={st.image} src={image} />
       </div>
     </div>
   );

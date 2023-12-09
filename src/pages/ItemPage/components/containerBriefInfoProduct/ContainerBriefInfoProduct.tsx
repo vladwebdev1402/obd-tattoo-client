@@ -29,7 +29,7 @@ const ContainerBriefInfoProduct: FC<Props> = ({ item }) => {
       <div className={st.descriptionBlock}>
         <div className={st.descriptionTxt}>Описание:</div>
         <span className={st.descriptionTxt}>
-          {item.description.split("/")[0]}
+          {item.description.split("/n")[0]}
         </span>
       </div>
       <div className={st.basketUtilsContainer}>

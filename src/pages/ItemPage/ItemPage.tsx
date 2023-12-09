@@ -1,69 +1,68 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
-import { IShopItem } from "@/types/shopItem";
 import st from "./ItemPage.module.scss";
 import SubBlockItems from "@/components/SubBlockItems/SubBlockItems";
 import ContainerImagesProduct from "./components/containerImagesProduct/ContainerImagesProduct";
 import ContainerBriefInfoProduct from "./components/containerBriefInfoProduct/ContainerBriefInfoProduct";
-const ItemPage: FC = () => {
+import { ItemPageStore } from "@/store";
+import { observer } from "mobx-react-lite";
+const ItemPage: FC = observer(() => {
   const params = useParams<{ id: string }>();
-  const [item, setItem] = useState<IShopItem>();
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setItem(minishopData.filter((item) => item.id === Number(params.id))[0]);
-  //   }, 800);
-  // }, [params]);
-
   useEffect(() => {
-    window.scrollTo({ top: 100, behavior: "smooth" });
-  }, [item]);
+    ItemPageStore.getAll(params.id || "");
+    window.scrollTo({ top: 100 });
+  }, [params.id]);
 
-  if (item) {
-    return (
-      <div className={st.containerPage}>
-        <Breadcrumbs
-          params={true}
-          nameParams={item.name}
-          className={st.breadcrumbs}
-        />
-
-        <div className={st.itemNameTxt}>{item.name}</div>
-        <div className={st.imagesAndBriefInfo}>
-          <ContainerImagesProduct
-            image={item.image}
-            marcers={item.marcers || {}}
-            id={item._id}
+  return (
+    <div className={st.containerPage}>
+      {ItemPageStore.item !== null && ItemPageStore.isLoadingComplete && (
+        <>
+          <Breadcrumbs
+            params={true}
+            nameParams={ItemPageStore.item.name}
+            className={st.breadcrumbs}
           />
-          <ContainerBriefInfoProduct item={item} />
-        </div>
-        <div className={st.fullInfoContainer}>
+
+          <div className={st.itemNameTxt}>{ItemPageStore.item.name}</div>
+          <div className={st.imagesAndBriefInfo}>
+            <ContainerImagesProduct
+              image={ItemPageStore.item.image}
+              marcers={ItemPageStore.item.marcers}
+              id={ItemPageStore.item._id}
+            />
+            <ContainerBriefInfoProduct item={ItemPageStore.item} />
+          </div>
           <div className={st.descriptionContainer}>
             <div className={st.titleBlock}>Описание</div>
             <div className={st.descriptionBlock}>
-              {item.description.split("/").map((desc) => (
+              {ItemPageStore.item.description.split("/n").map((desc) => (
                 <p key={desc}>{desc}</p>
               ))}
             </div>
           </div>
+
+          <SubBlockItems
+            title="Товары этого бренда"
+            watchAll={() => {}}
+            items={ItemPageStore.brandItems}
+          />
+
+          <SubBlockItems
+            title="Похожие товары"
+            watchAll={() => {}}
+            items={ItemPageStore.categoryItems}
+          />
+        </>
+      )}
+      {!ItemPageStore.isLoadingComplete && <div className={st.load}></div>}
+      {ItemPageStore.isLoadingComplete && ItemPageStore.error && (
+        <div className={st.error}>
+          При запросе товаров на сервере произошла ошибка
         </div>
-
-        {/* <SubBlockItems
-          title="Товары этого бренда"
-          watchAll={() => {}}
-          items={minishopData}
-        />
-
-        <SubBlockItems
-          title="Похожие товары"
-          watchAll={() => {}}
-          items={minishopData}
-        /> */}
-      </div>
-    );
-  }
-
-  return <div className={st.load}></div>;
-};
+      )}
+    </div>
+  );
+});
 
 export default ItemPage;

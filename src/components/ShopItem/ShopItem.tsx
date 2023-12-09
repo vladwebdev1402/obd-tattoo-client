@@ -18,7 +18,6 @@ const ShopItem: FC<ShopItemProps> = ({
   item,
   smallItem = false,
   noneBtn = false,
-  checkbox = false,
   swipe = false,
 }) => {
   const [inBasket, setInBasket] = useState(false);
