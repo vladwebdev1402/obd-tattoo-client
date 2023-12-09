@@ -3,12 +3,14 @@ import CategoryContainer from "./CategoryContainer";
 import CategoryLink from "./CategoryLink";
 import styles from "./LinkCatalogBody.module.scss";
 import { brands, category } from "../../../../../data/catalogCategory";
+import { CategoryStore } from "@/store";
 
 interface Props {
   isVisible: boolean;
 }
 const LinkCatalogBody: FC<Props> = ({ isVisible }) => {
   const [isBrands, setIsBrands] = useState<boolean>(false);
+
   return (
     <div
       className={`${styles.catalogBody} ${isVisible && styles.active} ${
@@ -28,10 +30,7 @@ const LinkCatalogBody: FC<Props> = ({ isVisible }) => {
         />
       </div>
       <div className="horizontal-divider"></div>
-      <CategoryContainer
-        items={isBrands ? brands : category}
-        brands={isBrands}
-      />
+      <CategoryContainer categorys={CategoryStore.data} brands={isBrands} />
     </div>
   );
 };

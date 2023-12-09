@@ -5,8 +5,12 @@ import styles from "./Navbar.module.scss";
 import Search from "./Seacrh/Search";
 import Account from "../Header/Account/Account";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
+import { CategoryStore } from "@/store";
 
 const Navbar: React.FC = () => {
+  useEffect(() => {
+    CategoryStore.getAll();
+  }, []);
   return (
     <div className={styles.down}>
       <LinkCatalog />
