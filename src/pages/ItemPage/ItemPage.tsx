@@ -1,27 +1,30 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
 import st from "./ItemPage.module.scss";
 import SubBlockItems from "@/components/SubBlockItems/SubBlockItems";
 import ContainerImagesProduct from "./components/containerImagesProduct/ContainerImagesProduct";
 import ContainerBriefInfoProduct from "./components/containerBriefInfoProduct/ContainerBriefInfoProduct";
-import { ItemPageStore } from "@/store";
+import { CategoryStore, ItemPageStore } from "@/store";
 import { observer } from "mobx-react-lite";
 const ItemPage: FC = observer(() => {
-  const params = useParams<{ id: string }>();
+  const params = useParams<{ id: string; category: string }>();
+
   useEffect(() => {
     ItemPageStore.getAll(params.id || "");
     window.scrollTo({ top: 100 });
   }, [params.id]);
-
+  const category = useMemo(() => {
+    const c = CategoryStore.data.filter((c) => c._id === params.category)[0];
+    return c;
+  }, [params.category, CategoryStore.data]);
   return (
     <div className={st.containerPage}>
       {ItemPageStore.item !== null && ItemPageStore.isLoadingComplete && (
         <>
           <Breadcrumbs
-            params={true}
-            nameParams={ItemPageStore.item.name}
             className={st.breadcrumbs}
+            params={[category.name ?? "", ItemPageStore.item.name]}
           />
 
           <div className={st.itemNameTxt}>{ItemPageStore.item.name}</div>

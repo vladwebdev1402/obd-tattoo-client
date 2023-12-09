@@ -33,7 +33,7 @@ const BrandPage = () => {
   }, [currentType, items]);
   return (
     <div className={st.container}>
-      <Breadcrumbs params={true} nameParams={brand?.name} />
+      <Breadcrumbs />
       <BrandImgHeader img={brand?.img || ""} name={brand?.name || ""} />
       <FilterCategoryCatalog
         setType={setCurrentType}

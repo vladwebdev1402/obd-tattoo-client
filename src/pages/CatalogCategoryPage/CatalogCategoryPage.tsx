@@ -49,7 +49,7 @@ const CatalogPage = observer(() => {
 
   return (
     <div className={styles.catalogContainer}>
-      <Breadcrumbs />
+      <Breadcrumbs params={[category]} />
       <h1>{category}</h1>
       <FilterParametrsItems filters={filters} setFilters={setFilters} />
       <ItemsContainer

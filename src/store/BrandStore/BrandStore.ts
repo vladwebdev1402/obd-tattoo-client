@@ -11,6 +11,7 @@ class BrandStore extends BaseStore<IBrand> {
             const response = await BrandApi.getAll();
             this.data = response.data;
             this.message = response.message;
+            this.error = ""
         }
         catch (err) {
             this.handleError(err)

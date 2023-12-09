@@ -9,6 +9,7 @@ class CaregoryStore extends BaseStore<ICategory> {
             const res = await CategoryApi.getAll();
             this.data = res.data;
             this.message = res.message;
+            this.error = ""
         }
         catch (e) {
             this.handleError(e);

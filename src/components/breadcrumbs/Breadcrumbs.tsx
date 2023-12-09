@@ -2,53 +2,51 @@ import React, { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { pathnames } from "@/data/pathnames";
 import styles from "./Breadcrumbs.module.scss";
+import Breadcrumb from "./Breadcrumb";
 
 interface Props {
-  params?: boolean;
-  nameParams?: string;
+  params?: string[];
   className?: string;
 }
-const Breadcrumbs: FC<Props> = ({
-  params = false,
-  nameParams = "",
-  className = "",
-}) => {
+const Breadcrumbs: FC<Props> = ({ params = [], className = "" }) => {
   const location = useLocation().pathname.split("/").slice(2);
+  const locationLength = location.length;
+  const startIdx = locationLength - params.length;
 
   let allPath = "/tattoo-react";
 
   return (
     <div className={`${styles.breadcrumbsContainer} ${className}`}>
       <ul className={styles.breadcrumbsList}>
-        <li className={`${styles.link}`}>
-          <Link to="/tattoo-react">
-            <span className={styles.linkTxt}>Главная</span>
-          </Link>
-        </li>
+        <Breadcrumb to={"/tattoo-react"} slash={false}>
+          Главная
+        </Breadcrumb>
 
-        {location.map((path, idx) => {
+        {location.slice(0, locationLength - params.length).map((path, idx) => {
           allPath += `/${path}`;
           return (
-            <li
-              key={idx}
-              className={`${styles.link} ${
-                idx === location.length - 1 && styles.active
-              }`}
+            <Breadcrumb
+              key={allPath}
+              to={allPath}
+              active={idx === location.length - 1}
             >
-              <span className={styles.slash}>/</span>
-              <Link to={allPath}>
-                <span className={styles.linkTxt}>{pathnames[path]}</span>
-              </Link>
-            </li>
+              {pathnames[path]}
+            </Breadcrumb>
           );
         })}
-        {params && (
-          <li className={`${styles.link} ${styles.active}`}>
-            <Link to={allPath}>
-              <span className={styles.linkTxt}>{nameParams}</span>
-            </Link>
-          </li>
-        )}
+        {params.length > 0 &&
+          params.map((path, idx) => {
+            allPath += `/${location[startIdx + idx]}`;
+            return (
+              <Breadcrumb
+                key={allPath}
+                to={allPath}
+                active={startIdx + idx === location.length - 1}
+              >
+                {path}
+              </Breadcrumb>
+            );
+          })}
       </ul>
     </div>
   );

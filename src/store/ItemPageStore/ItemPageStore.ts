@@ -23,6 +23,7 @@ class ItemPageStore {
             this.item = (await ItemApi.getItemById(_id)).data[0];
             this.brandItems = (await ItemApi.getAll({brand: this.item.brand})).data;
             this.categoryItems = (await ItemApi.getAll({category: this.item.category})).data;
+            this.error = ""
         }
         catch (err) {
             this.handleError(err);

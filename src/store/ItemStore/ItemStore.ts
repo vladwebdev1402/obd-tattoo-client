@@ -15,7 +15,7 @@ class ItemStore extends BaseStore<IShopItem> {
       this.data = response.data;
       this.message = response.message;
       this.isLoadingComplete = true;
-
+      this.error = ""
     } catch (err) {
       this.handleError(err);
     } finally {

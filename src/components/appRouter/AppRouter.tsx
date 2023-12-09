@@ -30,7 +30,7 @@ const AppRouter: FC = () => {
           path="/tattoo-react/catalog/:id/"
           element={<CatalogCategoryPage />}
         />
-        <Route path="/tattoo-react/catalog/:type/:id" element={<ItemPage />} />
+        <Route path="/tattoo-react/catalog/:category/:id" element={<ItemPage />} />
         <Route path="/tattoo-react/brands/:id" element={<BrandPage />} />
         <Route path="/tattoo-react/profile" element={<ProfilePage />} />
         <Route path="/tattoo-react/catalog/basket" element={<BasketPage />} />
