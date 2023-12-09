@@ -1,6 +1,5 @@
 import BasketPage from "@/pages/BasketPage/BasketPage";
 import BrandPage from "@/pages/BrandPage/BrandPage";
-import CatalogPage from "@/pages/CatalogCategoryPage/CatalogCategoryPage";
 import ContactsPage from "@/pages/ContactsPage/ContactsPage";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
 import ItemPage from "@/pages/ItemPage/ItemPage";
@@ -17,6 +16,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import CatalogPage from "@/pages/CatalogPage/CatalogPage";
 
 const AppRouter: FC = () => {
   const router = createBrowserRouter(

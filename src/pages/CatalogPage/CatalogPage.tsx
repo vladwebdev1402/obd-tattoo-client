@@ -6,14 +6,16 @@ import ShopItem from "../../components/ShopItem/ShopItem";
 import st from "./CatalogPage.module.scss";
 import ItemsContainer from "../../components/UI/containers/ItemsContainer/ItemsContainer";
 import { ItemStore } from "@/store";
-const CatalogPage = () => {
+import { observer } from "mobx-react-lite";
+const CatalogPage = observer(() => {
   const navigate = useNavigate();
   const onClick = (link: string) => {
     navigate(`${link}`);
   };
   useEffect(() => {
     window.scrollTo({ top: 100, behavior: "smooth" });
-  });
+    ItemStore.getItems();
+  }, []);
   return (
     <div className={st.container}>
       <Breadcrumbs />
@@ -28,6 +30,6 @@ const CatalogPage = () => {
       </ItemsContainer>
     </div>
   );
-};
+});
 
 export default CatalogPage;
