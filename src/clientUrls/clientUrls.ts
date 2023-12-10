@@ -1,7 +1,7 @@
-const rootUrl = ""
+export const rootUrl = ""
 
 export const urls = {
-    main: rootUrl,
+    main: rootUrl + "/",
     favorite: rootUrl + "/favorite",
     signup: rootUrl + "/signup",
     login: rootUrl + "/login",

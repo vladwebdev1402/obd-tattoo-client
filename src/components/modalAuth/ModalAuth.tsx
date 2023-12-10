@@ -7,23 +7,47 @@ import MyInput from "@UI/input/MyInput";
 import st from "./ModalAuth.module.scss";
 import ModalView from "@UI/modal/ModalView";
 import CloseModal from "@UI/button/closeModal/CloseModal";
+import { useNavigate } from "react-router-dom";
+import { urls } from "@/clientUrls/clientUrls";
 interface Props {
   setModal: (modal: boolean) => void;
 }
 
 const ModalAuth: FC<Props> = ({ setModal }) => {
-  const [number, setNumber] = useState("");
-  const [checked, setChecked] = useState(false);
-  const [smsTo, setSmsTo] = useState(false);
-  const [code, setCode] = useState({ 0: "", 1: "", 2: "", 3: "" });
+  // const [number, setNumber] = useState("");
+  // const [checked, setChecked] = useState(false);
+  // const [smsTo, setSmsTo] = useState(false);
+  // const [code, setCode] = useState({ 0: "", 1: "", 2: "", 3: "" });
+  const navigate = useNavigate();
   return (
     <ModalView onClick={() => setModal(false)}>
       <div
-        className={`${st.modalBody} ${smsTo && st.smsToBody}`}
+        className={`${st.modalBody}`}
         onClick={(e: React.MouseEvent<HTMLDivElement>) => {
           e.stopPropagation();
         }}
       >
+        <CloseModal onClick={() => setModal(false)} className={st.closeBtn} />
+        <div className={st.auth__head}>Недостаточно прав</div>
+        <div className={st.auth__txt}>
+          Вы не автозированы. Пожалуйста, авторизуйтесь!
+        </div>
+        <ClipButton
+          className={st.btn}
+          onClick={() => navigate(urls.login)}
+          theme="dark"
+        >
+          Авторизоваться
+        </ClipButton>
+      </div>
+    </ModalView>
+  );
+};
+
+export default ModalAuth;
+
+{
+  /* 
         <CloseModal onClick={() => setModal(false)} className={st.closeBtn} />
 
         {!smsTo && <div className={st.headTxt}>Личный кабинет</div>}
@@ -111,9 +135,5 @@ const ModalAuth: FC<Props> = ({ setModal }) => {
           }}
           checked={checked}
         />
-      </div>
-    </ModalView>
-  );
-};
-
-export default ModalAuth;
+      </div> */
+}

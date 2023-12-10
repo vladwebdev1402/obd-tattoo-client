@@ -20,7 +20,7 @@ const AuthSignupPage = observer(() => {
     await AuthStore.signup(login, password, repeatPassword);
     if (AuthStore.successfully) {
       AuthStore.clear();
-      navigate("/tattoo-react/login");
+      navigate(urls.login);
     }
   };
   return (

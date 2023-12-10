@@ -19,6 +19,18 @@
   font-size: 30px;
   max-width: 250px;
 }
+.auth__head {
+  font-weight: bold;
+  color: var(--dark);
+  font-size: 30px;
+  max-width: 250px;
+  text-align: center;
+}
+.auth__txt {
+  font-size: 20px;
+  margin-top: 25px;
+  text-align: center;
+}
 
 .btn {
   width: 100%;

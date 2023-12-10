@@ -6,6 +6,8 @@ import ClipButton from "@UI/button/clipButton/ClipButton";
 import Marcers from "./Marcers/Marcers";
 import { useNavigate } from "react-router-dom";
 import { urls } from "@/clientUrls/clientUrls";
+import AuthStore from "@/store/AuthStore/AuthStore";
+import ModalAuth from "../modalAuth/ModalAuth";
 
 interface ShopItemProps {
   item: IShopItem;
@@ -22,6 +24,7 @@ const ShopItem: FC<ShopItemProps> = ({
   swipe = false,
 }) => {
   const [inBasket, setInBasket] = useState(false);
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const plusBasket = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -30,12 +33,18 @@ const ShopItem: FC<ShopItemProps> = ({
     e.stopPropagation();
   };
 
+  const addBasket = () => {
+    if (!AuthStore.auth) setModal(true);
+    console.log(123);
+  };
+
   return (
     <div
       className={`${styles.item} ${smallItem && styles.smallItem} ${
         noneBtn && styles.noneBtn
       }`}
     >
+      {modal && <ModalAuth setModal={setModal} />}
       <div
         className={styles.itemContainer}
         onClick={() => {
@@ -57,7 +66,12 @@ const ShopItem: FC<ShopItemProps> = ({
 
         <div className={styles.button}>
           {!inBasket && (
-            <ClipButton onClick={() => setInBasket(true)} theme="light">
+            <ClipButton
+              onClick={() => {
+                addBasket();
+              }}
+              theme="light"
+            >
               <span className={styles.addTextDesktop}>Добавить в корзину</span>
               <span className={styles.addTextMobile}>В корзину</span>
             </ClipButton>
