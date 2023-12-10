@@ -56,7 +56,7 @@ const Account: React.FC<Props> = observer(({ className }) => {
           </button>
         </>
       ) : (
-        <Link to="/tattoo-react/login" className={styles.account__auth}>
+        <Link to={urls.login} className={styles.account__auth}>
           Авторизоваться
         </Link>
       )}
