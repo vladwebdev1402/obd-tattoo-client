@@ -33,6 +33,11 @@ const CatalogPage = observer(() => {
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
+    const query: IItemParams = {
+      category: params.id,
+    };
+
+    ItemStore.getItems(query);
   }, []);
 
   useEffect(() => {
@@ -44,8 +49,8 @@ const CatalogPage = observer(() => {
 
     if (filters.inStock) query.no = false;
 
-    ItemStore.getItems(query);
-  }, [filters, params]);
+    ItemStore.getItems(query, true);
+  }, [filters.price, filters.inStock, params]);
 
   return (
     <div className={styles.catalogContainer}>

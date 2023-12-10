@@ -8,13 +8,12 @@ class ItemStore extends BaseStore<IShopItem> {
     super();
   }
 
-  getItems = async (params?: IItemParams) => {
-    this.isLoadingComplete = false;
+  getItems = async (params?: IItemParams, loading=false) => {
+    this.isLoadingComplete = loading;
     try {
       const response = await ItemApi.getAll(params);
       this.data = response.data;
       this.message = response.message;
-      this.isLoadingComplete = true;
       this.error = ""
     } catch (err) {
       this.handleError(err);

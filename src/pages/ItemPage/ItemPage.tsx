@@ -24,7 +24,7 @@ const ItemPage: FC = observer(() => {
         <>
           <Breadcrumbs
             className={st.breadcrumbs}
-            params={[category.name ?? "", ItemPageStore.item.name]}
+            params={[category.name ?? "", ItemPageStore.item.name ?? ""]}
           />
 
           <div className={st.itemNameTxt}>{ItemPageStore.item.name}</div>

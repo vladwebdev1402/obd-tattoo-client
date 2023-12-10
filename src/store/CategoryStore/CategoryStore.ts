@@ -4,7 +4,6 @@ import { CategoryApi } from "@/api";
 
 class CaregoryStore extends BaseStore<ICategory> {
     getAll = async () => {
-        this.isLoadingComplete = false
         try {
             const res = await CategoryApi.getAll();
             this.data = res.data;

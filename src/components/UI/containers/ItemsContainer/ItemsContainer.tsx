@@ -3,12 +3,14 @@ import st from "./ItemsContainer.module.scss";
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   error: string;
   isLoadingComplete: boolean;
+  emptyTxt?: string;
 }
 const ItemsContainer: FC<Props> = ({
   children,
   error,
   isLoadingComplete,
   className = "",
+  emptyTxt = "Товары отсутствуют",
   ...props
 }) => {
   return (
@@ -27,6 +29,11 @@ const ItemsContainer: FC<Props> = ({
       {!error &&
         (isLoadingComplete || Children.toArray(children).length > 0) &&
         children}
+      {!error &&
+        isLoadingComplete &&
+        Children.toArray(children).length === 0 && (
+          <div className={st.container__empty}>{emptyTxt}</div>
+        )}
     </div>
   );
 };

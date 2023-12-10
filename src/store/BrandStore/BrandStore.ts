@@ -4,9 +4,8 @@ import { BrandApi } from "@/api";
 
 class BrandStore extends BaseStore<IBrand> {
     
-    getAll = async () => {
-        this.isLoadingComplete = false;
-
+    getAll = async (loading=false) => {
+        this.isLoadingComplete = loading;
         try {
             const response = await BrandApi.getAll();
             this.data = response.data;
