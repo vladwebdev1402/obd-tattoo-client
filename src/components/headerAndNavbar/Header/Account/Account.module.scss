@@ -41,6 +41,12 @@
   margin-left: 0px;
   position: relative;
 }
+
+.account__auth {
+  color: var(--white);
+  
+}
+
 @media (min-width: 992px) {
   .iconBtn:hover {
     path {

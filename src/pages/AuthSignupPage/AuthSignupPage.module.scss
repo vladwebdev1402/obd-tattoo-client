@@ -1,0 +1,35 @@
+.signup {
+    max-width: 380px;
+    padding: 0 15px;
+    margin: 100px auto 100px auto;
+}
+
+.signup__header {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.signup__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signup__btn {
+    width: 100%;
+    height: 60px;
+}
+
+.signup__footer {
+    margin-top: 10px;
+    a {
+        color: var(--dark)
+    }
+}
+
+.signup__message {
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 500;
+}

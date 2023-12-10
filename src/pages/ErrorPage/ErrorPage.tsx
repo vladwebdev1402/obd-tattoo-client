@@ -4,6 +4,7 @@ import HeadAndNav from "../../components/headerAndNavbar/HeadAndNav";
 import ClipButton from "../../components/UI/button/clipButton/ClipButton";
 import LineButton from "../../components/UI/button/lineButton/LineButton";
 import styles from "./ErrorPage.module.scss";
+import { urls } from "@/clientUrls/clientUrls";
 const ErrorPage: FC = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,7 +22,7 @@ const ErrorPage: FC = () => {
             <ClipButton
               theme="dark"
               onClick={() => {
-                navigate("/tattoo-react");
+                navigate(urls.main);
               }}
             >
               Вернуться на главную
@@ -30,7 +31,7 @@ const ErrorPage: FC = () => {
           <div className={styles.lineBtn}>
             <LineButton
               onClick={() => {
-                navigate("/tattoo-react/catalog");
+                navigate(urls.catalog);
               }}
             >
               Вернуться в каталог

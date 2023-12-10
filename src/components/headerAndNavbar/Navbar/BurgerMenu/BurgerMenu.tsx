@@ -8,6 +8,7 @@ import BurgerIcon from "@UI/icons/headerAndNavIcons/BurgerIcon";
 import RightFooter from "@/components/Footer/RightFooter/RightFooter";
 import { CategoryStore } from "@/store";
 import { observer } from "mobx-react-lite";
+import { urls } from "@/clientUrls/clientUrls";
 const BurgerMenu: FC = observer(() => {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
   const [isActiveCatalog, setIsActiveCatalog] = useState(false);
@@ -69,19 +70,19 @@ const BurgerMenu: FC = observer(() => {
           >
             <ul className={styles.linkColumn}>
               <li className={styles.linkLi}>
-                <MyLink name={"Промокоды"} to="/tattoo-react/promo" />
+                <MyLink name={"Промокоды"} to={urls.promocodes} />
               </li>
               <li className={styles.linkLi}>
-                <MyLink name={"Скидки"} to="/tattoo-react/discount" />
+                <MyLink name={"Скидки"} to={urls.discount} />
               </li>
               <li className={styles.linkLi}>
-                <MyLink name={"Контакты"} to="/tattoo-react/contacts" />
+                <MyLink name={"Контакты"} to={urls.contacts} />
               </li>
               <li className={styles.linkLi}>
-                <MyLink name={"Избранное"} to="/tattoo-react/favorite" />
+                <MyLink name={"Избранное"} to={urls.favorite} />
               </li>
               <li className={styles.linkLi}>
-                <MyLink name={"Личный кабинет"} to="/tattoo-react/profile" />
+                <MyLink name={"Личный кабинет"} to={urls.profile} />
               </li>
             </ul>
           </nav>

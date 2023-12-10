@@ -8,6 +8,7 @@ import MyInput from "@UI/input/MyInput";
 import MyRadio from "@UI/radio/MyRadio";
 import st from "./Ordering.module.scss";
 import { deliveryRadios, paymentRadios } from "./radios";
+import { urls } from "@/clientUrls/clientUrls";
 const Ordering = () => {
   const navigate = useNavigate();
   const [payment, setPayment] = useState("Онлайн на сайте");
@@ -94,7 +95,7 @@ const Ordering = () => {
         <ClipButton
           className={st.clipBtn}
           onClick={() => {
-            navigate("/tattoo-react/catalog/basket/services");
+            navigate(urls.services);
           }}
           theme="dark"
         >

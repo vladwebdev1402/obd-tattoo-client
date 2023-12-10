@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import styles from "./Swiper.module.scss";
 import img from "@/assets/images/bg1.png";
+import { urls } from "@/clientUrls/clientUrls";
 
 const Slide: FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Slide: FC = () => {
         <div className={styles.slideBtn}>
           <ClipButton
             onClick={() => {
-              navigate("/tattoo-react/catalog");
+              navigate(urls.catalog);
             }}
             theme="dark"
           >

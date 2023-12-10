@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CatalogFooter.module.scss";
 import ClipButton from "../../../../../components/UI/button/clipButton/ClipButton";
+import { urls } from "@/clientUrls/clientUrls";
 const CatalogFooter: FC = () => {
   const navigate = useNavigate();
   return (
@@ -10,7 +11,7 @@ const CatalogFooter: FC = () => {
         <ClipButton
           theme="light"
           onClick={() => {
-            navigate("catalog");
+            navigate(urls.catalog);
           }}
         >
           Смотреть каталог

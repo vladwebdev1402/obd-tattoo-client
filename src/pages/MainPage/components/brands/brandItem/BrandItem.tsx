@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./BrandItem.module.scss";
+import { urls } from "@/clientUrls/clientUrls";
 interface Props {
   img: string;
   id: number;
@@ -14,7 +15,7 @@ const BrandItem: FC<Props> = ({ img, id }) => {
         src={img}
         alt=""
         onClick={() => {
-          navigate(`/tattoo-react/brands/${id}`);
+          navigate(urls.navigateBrand + `/${id}`);
         }}
       />
     </div>

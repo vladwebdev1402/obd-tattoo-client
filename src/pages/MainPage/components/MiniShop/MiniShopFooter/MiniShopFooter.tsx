@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import styles from "./MiniShopFooter.module.scss";
 import { useNavigate } from "react-router-dom";
 import ClipButton from "../../../../../components/UI/button/clipButton/ClipButton";
+import { urls } from "@/clientUrls/clientUrls";
 const MiniShopFooter: FC = () => {
   const navigate = useNavigate();
   return (
@@ -10,7 +11,7 @@ const MiniShopFooter: FC = () => {
         <ClipButton
           theme="light"
           onClick={() => {
-            navigate("catalog");
+            navigate(urls.catalog);
           }}
         >
           Показать ещё

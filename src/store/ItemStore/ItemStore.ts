@@ -4,9 +4,6 @@ import { ItemApi } from "@/api";
 import { IItemParams } from "@/types/itemParamsApi";
 
 class ItemStore extends BaseStore<IShopItem> {
-  constructor() {
-    super();
-  }
 
   getItems = async (params?: IItemParams, loading=false) => {
     this.isLoadingComplete = loading;

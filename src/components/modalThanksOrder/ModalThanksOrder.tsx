@@ -5,6 +5,7 @@ import LineButton from "@UI/button/lineButton/LineButton";
 import st from "./ModalThanksOrder.module.scss";
 import ModalView from "@UI/modal/ModalView";
 import CloseModal from "@UI/button/closeModal/CloseModal";
+import { urls } from "@/clientUrls/clientUrls";
 interface Props {
   setModal: (value: boolean) => void;
 }
@@ -33,7 +34,7 @@ const ModalThanksOrder: FC<Props> = ({ setModal }) => {
           <ClipButton
             onClick={() => {
               setModal(false);
-              navigate("/tattoo-react/");
+              navigate(urls.main);
             }}
             theme="dark"
             className={st.returnMainbtn}
@@ -47,7 +48,7 @@ const ModalThanksOrder: FC<Props> = ({ setModal }) => {
           <LineButton
             onClick={() => {
               setModal(false);
-              navigate("/tattoo-react//catalog");
+              navigate(urls.catalog);
             }}
           >
             Вернуться в каталог

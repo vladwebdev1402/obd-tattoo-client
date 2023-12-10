@@ -4,6 +4,7 @@ import styles from "./LinkCatalogBody.module.scss";
 import { ICategory } from "@/types/ICategory";
 import { observer } from "mobx-react-lite";
 import { IBrand } from "@/types/IBrand";
+import { urls } from "@/clientUrls/clientUrls";
 interface Props {
   // items: ICategory[];
   categorys: ICategory[];
@@ -21,7 +22,7 @@ const CategoryContainer: FC<Props> = observer(
               key={item._id}
               className={styles.category}
               onClick={() => {
-                navigate(`catalog/${item?._id}`);
+                navigate(urls.navigateCatalog + `/${item?._id}`);
               }}
             >
               {item.name}
@@ -33,7 +34,7 @@ const CategoryContainer: FC<Props> = observer(
               key={item._id}
               className={styles.category}
               onClick={() => {
-                navigate(`brands/${item?._id}`);
+                navigate(urls.navigateBrand + `/${item?._id}`);
               }}
             >
               {item.name}

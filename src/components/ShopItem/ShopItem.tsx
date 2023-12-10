@@ -5,6 +5,7 @@ import styles from "./ShopItem.module.scss";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import Marcers from "./Marcers/Marcers";
 import { useNavigate } from "react-router-dom";
+import { urls } from "@/clientUrls/clientUrls";
 
 interface ShopItemProps {
   item: IShopItem;
@@ -38,8 +39,7 @@ const ShopItem: FC<ShopItemProps> = ({
       <div
         className={styles.itemContainer}
         onClick={() => {
-          if (!swipe)
-            navigate(`/tattoo-react/catalog/${item.category}/${item._id}`);
+          if (!swipe) navigate(urls.catalog + `/${item.category}/${item._id}`);
         }}
       >
         <div className={styles.item__img}>
