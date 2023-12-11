@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import ShopItem from "@/components/ShopItem/ShopItem";
 import Slider from "@UI/Slider/Slider";
 import st from "./SubBlockItems.module.scss";

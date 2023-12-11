@@ -1,4 +1,4 @@
-import { IServiceItem } from "../types/serviceItem";
+import { IServiceItem } from "../types/entity/serviceItem";
 import img1 from "../assets/images/services/1.png"
 import img2 from "../assets/images/services/2.png"
 import img3 from "../assets/images/services/3.png"

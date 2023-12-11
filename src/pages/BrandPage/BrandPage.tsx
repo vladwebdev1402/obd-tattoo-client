@@ -9,7 +9,7 @@ import ItemsContainer from "@/components/UI/containers/ItemsContainer/ItemsConta
 import BrandImgHeader from "./components/brandImgHeader/BrandImgHeader";
 import { BrandStore, ItemStore } from "@/store";
 import { observer } from "mobx-react-lite";
-import { IItemParams } from "@/types/itemParamsApi";
+import { IItemParams } from "@/types/api/itemParamsApi";
 const BrandPage = observer(() => {
   const params = useParams<{ id: string }>();
   const brand = BrandStore.data.filter((b) => b._id === params.id)[0];

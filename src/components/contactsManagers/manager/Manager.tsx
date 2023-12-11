@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./Manager.module.scss";
 import Status from "./Status";
 import ManagerContacts from "@/components/managerContacts/ManagerContacts";
-import { IManager } from "@/types/manager";
+import { IManager } from "@/types/entity/manager";
 interface Props {
   manager: IManager;
 }

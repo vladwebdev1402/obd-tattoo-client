@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IProductOrder } from "@/types/orderProduct";
+import { IProductOrder } from "@/types/entity/orderProduct";
 import st from "./StoryOrders.module.scss";
 interface Props {
   order: IProductOrder;

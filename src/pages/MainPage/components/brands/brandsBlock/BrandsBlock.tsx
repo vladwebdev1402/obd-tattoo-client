@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import BrandItem from "../brandItem/BrandItem";
 import styles from "./BrandsBlock.module.scss";
-import { ICategory } from "../../../../../types/category";
+import { ICategory } from "../../../../../types/entity/category";
 interface Props {
   brands: ICategory[];
 }

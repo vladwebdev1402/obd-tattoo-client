@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IFiltersParametrs } from "../../types/FilterParametrs";
+import { IFiltersParametrs } from "../../types/entity/FilterParametrs";
 import InputPrice from "@UI/input/InputPrice";
 import MyRadio from "@UI/radio/MyRadio";
 import MySwitch from "@UI/switch/MySwitch";

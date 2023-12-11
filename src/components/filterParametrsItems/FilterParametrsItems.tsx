@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IFiltersParametrs } from "@/types/FilterParametrs";
+import { IFiltersParametrs } from "@/types/entity/FilterParametrs";
 import MySelect from "@UI/select/MySelect";
 import styles from "./FilterParametrsItems.module.scss";
 import filterIcon from "@/assets/staticIcons/filter.svg";

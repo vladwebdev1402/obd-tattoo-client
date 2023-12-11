@@ -1,7 +1,7 @@
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import BaseStore from "../BaseStore";
 import { ItemApi } from "@/api";
-import { IItemParams } from "@/types/itemParamsApi";
+import { IItemParams } from "@/types/api/itemParamsApi";
 
 class ItemStore extends BaseStore<IShopItem> {
 

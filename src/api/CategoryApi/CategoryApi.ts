@@ -1,4 +1,4 @@
-import { ICategory } from "@/types/ICategory";
+import { ICategory } from "@/types/entity/ICategory";
 import { BaseApi } from "../BaseApi";
 import { ApiUrl } from "../url";
 

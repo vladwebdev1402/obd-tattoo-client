@@ -1,4 +1,4 @@
-import { ICategory } from "../types/category";
+import { ICategory } from "../types/entity/category";
 import img1 from "../assets/images/brands/1.png"
 import img2 from "../assets/images/brands/2.png"
 import img3 from "../assets/images/brands/3.png"

@@ -1,4 +1,4 @@
-import { IReview } from "../types/review";
+import { IReview } from "../types/entity/review";
 import img1 from "../assets/images//reviews/1.png"
 import img2 from "../assets/images//reviews/2.png"
 export const reviews: IReview[] = [

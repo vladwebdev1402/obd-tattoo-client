@@ -1,4 +1,4 @@
-import { IProductOrder } from "../types/orderProduct";
+import { IProductOrder } from "../types/entity/orderProduct";
 
 export const ordersData: IProductOrder[] = [
   {

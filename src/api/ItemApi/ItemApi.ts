@@ -1,6 +1,6 @@
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import { BaseApi } from "../BaseApi";
-import { IItemParams } from "@/types/itemParamsApi";
+import { IItemParams } from "@/types/api/itemParamsApi";
 
 
 export class ItemApi {

@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LinkCatalogBody.module.scss";
-import { ICategory } from "@/types/ICategory";
+import { ICategory } from "@/types/entity/ICategory";
 import { observer } from "mobx-react-lite";
-import { IBrand } from "@/types/IBrand";
+import { IBrand } from "@/types/entity/IBrand";
 import { urls } from "@/clientUrls/clientUrls";
 interface Props {
   // items: ICategory[];

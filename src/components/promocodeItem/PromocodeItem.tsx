@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IPromocodeItem } from "@/types/promocodeItem";
+import { IPromocodeItem } from "@/types/entity/promocodeItem";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import styles from "./PromocodeItem.module.scss";
 interface Props {

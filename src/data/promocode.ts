@@ -1,4 +1,4 @@
-import { IPromocodeItem } from "../types/promocodeItem";
+import { IPromocodeItem } from "../types/entity/promocodeItem";
 import img1 from "../assets/images/promocode/1.png"
 import img2 from "../assets/images/promocode/2.png"
 import img3 from "../assets/images/promocode/3.png"

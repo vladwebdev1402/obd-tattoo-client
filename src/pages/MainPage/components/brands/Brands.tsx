@@ -3,7 +3,7 @@ import styles from "./Brands.module.scss";
 import BrandsBlock from "./brandsBlock/BrandsBlock";
 import { useWidth } from "../../../../hooks/useClose";
 import { useBrands } from "../../../../hooks/useBrands";
-import { ICategory } from "../../../../types/category";
+import { ICategory } from "../../../../types/entity/category";
 import Slider from "../../../../components/UI/Slider/Slider";
 import { brands } from "../../../../data/catalogCategory";
 

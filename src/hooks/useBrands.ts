@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ICategory } from "../types/category";
+import { ICategory } from "../types/entity/category";
 
 export const useBrands = (brands: ICategory[], countInGroup: number) => {
     const brandsGroup = useMemo(() => {

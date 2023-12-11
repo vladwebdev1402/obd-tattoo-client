@@ -1,4 +1,4 @@
-import { IBrand } from "@/types/IBrand";
+import { IBrand } from "@/types/entity/IBrand";
 import BaseStore from "../BaseStore";
 import { BrandApi } from "@/api";
 

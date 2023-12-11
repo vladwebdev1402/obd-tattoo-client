@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AuthUrl } from "../url";
-import { IAuthError } from "@/types/IAuthError";
+import { IAuthError } from "@/types/api/IAuthError";
 
 const customAxios = axios.create({
   baseURL: AuthUrl,

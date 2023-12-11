@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import FavoriteItem from "@UI/icons/itemIcons/favoriteIcon/FavoriteItem";
 import styles from "./ShopItem.module.scss";
 import ClipButton from "@UI/button/clipButton/ClipButton";

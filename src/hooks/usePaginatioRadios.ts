@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { ISlide } from "../types/swiper";
 
 export const usePagination = (count: number) => {
   const addRadios = useMemo(() => {

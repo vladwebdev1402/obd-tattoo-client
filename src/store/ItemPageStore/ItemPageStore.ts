@@ -1,5 +1,5 @@
 import { ItemApi } from "@/api";
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import { configure, makeAutoObservable } from "mobx";
 
 class ItemPageStore {

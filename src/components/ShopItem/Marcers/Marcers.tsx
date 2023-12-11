@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IMarcers } from "../../../types/shopItem";
+import { IMarcers } from "../../../types/entity/shopItem";
 import st from "./Marcers.module.scss";
 import m1 from "@/assets/staticIcons/marcers/new.svg";
 import m2 from "@/assets/staticIcons/marcers/hot.svg";

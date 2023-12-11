@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IContactPerson } from "@/types/contactPerson";
+import { IContactPerson } from "@/types/entity/contactPerson";
 import { regNumber } from "@/utils/regNumber";
 import LineButton from "@UI/button/lineButton/LineButton";
 import MyInput from "@UI/input/MyInput";

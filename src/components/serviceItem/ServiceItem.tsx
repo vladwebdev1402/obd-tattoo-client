@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import st from "./Service.module.scss";
 import ClipButton from "@UI/button/clipButton/ClipButton";
-import { IServiceItem } from "@/types/serviceItem";
+import { IServiceItem } from "@/types/entity/serviceItem";
 interface Props {
   item: IServiceItem;
 }

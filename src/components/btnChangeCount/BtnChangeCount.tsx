@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import st from "./btnChangeCount.module.scss";
 interface Props {
   item: IShopItem;

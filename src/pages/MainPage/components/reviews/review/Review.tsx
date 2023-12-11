@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import st from "./Review.module.scss";
 import instImg from "../../../../../assets/staticIcons/inst.svg";
-import { IReview } from "../../../../../types/review";
+import { IReview } from "../../../../../types/entity/review";
 interface Props {
   review: IReview;
 }

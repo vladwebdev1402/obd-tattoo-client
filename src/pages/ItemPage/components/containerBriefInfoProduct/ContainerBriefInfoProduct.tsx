@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import st from "./container.module.scss";
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import BtnChangeCount from "@/components/btnChangeCount/BtnChangeCount";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import ModalAuth from "@/components/modalAuth/ModalAuth";

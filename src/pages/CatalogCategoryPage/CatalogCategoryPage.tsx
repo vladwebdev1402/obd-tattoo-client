@@ -5,11 +5,11 @@ import ShopItem from "../../components/ShopItem/ShopItem";
 import ClipButton from "../../components/UI/button/clipButton/ClipButton";
 import FilterParametrsItems from "../../components/filterParametrsItems/FilterParametrsItems";
 import { useParams } from "react-router-dom";
-import { IFiltersParametrs } from "../../types/FilterParametrs";
+import { IFiltersParametrs } from "../../types/entity/FilterParametrs";
 import ItemsContainer from "../../components/UI/containers/ItemsContainer/ItemsContainer";
 import { CategoryStore, ItemStore } from "@/store";
 import { observer } from "mobx-react-lite";
-import { IItemParams } from "@/types/itemParamsApi";
+import { IItemParams } from "@/types/api/itemParamsApi";
 
 interface CategoryPage {
   id: string;

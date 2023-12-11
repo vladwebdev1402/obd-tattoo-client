@@ -1,7 +1,7 @@
 import React, { FC, useContext } from "react";
 
 import st from "./ContentBasket.module.scss";
-import { IShopItem } from "@/types/shopItem";
+import { IShopItem } from "@/types/entity/shopItem";
 import BtnChangeCount from "@/components/btnChangeCount/BtnChangeCount";
 interface Props {
   item: IShopItem;

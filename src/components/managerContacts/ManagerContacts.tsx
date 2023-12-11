@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./ManagerContacts.module.scss";
 import callImg from "@/assets/staticIcons/darkCall.svg";
 import mailImg from "@/assets/staticIcons/darkMail.svg";
-import { IManagerContacts } from "@/types/manager";
+import { IManagerContacts } from "@/types/entity/manager";
 
 interface Props {
   contacts: IManagerContacts;

@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import st from "./container.module.scss";
 import ImgRadio from "@UI/radio/imgRadio/ImgRadio";
-import { IMarcers } from "@/types/shopItem";
+import { IMarcers } from "@/types/entity/shopItem";
 import Marcers from "@/components/ShopItem/Marcers/Marcers";
 import FavoriteItem from "@UI/icons/itemIcons/favoriteIcon/FavoriteItem";
 interface Props {

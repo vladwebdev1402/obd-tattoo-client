@@ -1,4 +1,4 @@
-import { IManager } from "../types/manager";
+import { IManager } from "../types/entity/manager";
 
 export const managersData: IManager[] = [
     {   

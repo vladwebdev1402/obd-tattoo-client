@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IProductOrder } from "@/types/orderProduct";
+import { IProductOrder } from "@/types/entity/orderProduct";
 import ContentBasket from "../contentBasket/ContentBasket";
 import OrderFooter from "./OrderFooter";
 import OrderHead from "./OrderHead";
