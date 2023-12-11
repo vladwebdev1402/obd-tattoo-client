@@ -32,16 +32,24 @@ export class BaseApi {
   static get = async <T>(
     url: string,
     params?: any
-  ): Promise<{ result: { data: T; message: string }; status: number }> => {
+  ): Promise<{ data: T; message: string }> => {
     const response = await customAxios.get(url, params);
-    return { result: response.data, status: response.status };
+    return response.data
   };
 
   static post = async <T>(
     url: string,
     data: T
-  ): Promise<{ result: { data: T; message: string }; status: number }> => {
+  ): Promise<{ data: T; message: string }> => {
     const response = await customAxios.post(url, data);
-    return { result: response.data, status: response.status };
+    return response.data
+  };
+
+  static put = async <T>(
+    url: string,
+    data: T
+  ): Promise<{ data: T; message: string }> => {
+    const response = await customAxios.put(url, data);
+    return response.data
   };
 }
