@@ -78,17 +78,17 @@
 }
 
 .mobileChangeCount {
-  display: none;
+  display: none !important;
   margin-left: 50px;
 }
 
 @media (max-width: 1216px) {
   .desktopChangeCount {
-    display: none;
+    display: none !important;
   }
 
   .mobileChangeCount {
-    display: flex;
+    display: flex !important;
   }
   .addInBasketBtn {
     margin-left: 0;

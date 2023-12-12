@@ -5,12 +5,26 @@ import BtnChangeCount from "@/components/btnChangeCount/BtnChangeCount";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import ModalAuth from "@/components/modalAuth/ModalAuth";
 import AuthStore from "@/store/AuthStore/AuthStore";
+import { observer } from "mobx-react-lite";
+import { ProfileStore } from "@/store";
 interface Props {
   item: IShopItem;
 }
 
-const ContainerBriefInfoProduct: FC<Props> = ({ item }) => {
+const ContainerBriefInfoProduct: FC<Props> = observer(({ item }) => {
   const [modal, setModal] = useState(false);
+  const [count, setCount] = useState(
+    ProfileStore.getCountItemInBasket(item._id)
+  );
+
+  const plusBasket = () => {
+    setCount(Math.min(count + 1, item.count));
+  };
+
+  const minusBasket = () => {
+    setCount(Math.max(count - 1, 0));
+  };
+
   return (
     <div className={st.containerBriefInfo}>
       {modal && <ModalAuth setModal={setModal} />}
@@ -28,7 +42,12 @@ const ContainerBriefInfoProduct: FC<Props> = ({ item }) => {
           <span className={st.availabilityTxt}>Наличие: </span>
           {item.count}
         </span>
-        <BtnChangeCount item={item} className={st.mobileChangeCount} />
+        <BtnChangeCount
+          plusBasket={plusBasket}
+          minusBasket={minusBasket}
+          count={count}
+          className={st.mobileChangeCount}
+        />
       </div>
       <div className={st.descriptionBlock}>
         <div className={st.descriptionTxt}>Описание:</div>
@@ -38,12 +57,18 @@ const ContainerBriefInfoProduct: FC<Props> = ({ item }) => {
       </div>
       <div className={st.basketUtilsContainer}>
         <div className={st.utilsBasket}>
-          <BtnChangeCount item={item} className={st.desktopChangeCount} />
+          <BtnChangeCount
+            plusBasket={plusBasket}
+            minusBasket={minusBasket}
+            count={count}
+            className={st.desktopChangeCount}
+          />
           <div className={st.addInBasketBtn}>
             <ClipButton
               theme="dark"
               onClick={() => {
                 if (!AuthStore.auth) setModal(!modal);
+                else ProfileStore.setItemBasket(item._id, count);
               }}
             >
               Добавить в корзину
@@ -54,6 +79,6 @@ const ContainerBriefInfoProduct: FC<Props> = ({ item }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ContainerBriefInfoProduct;

@@ -4,7 +4,7 @@ import styles from "./icon.module.scss";
 
 interface FavoriteIconProps {
   className?: string;
-  id: number;
+  id: string;
 }
 
 const FavoriteItem: FC<FavoriteIconProps> = ({ className = "", id }) => {

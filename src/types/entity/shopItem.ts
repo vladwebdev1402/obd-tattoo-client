@@ -9,7 +9,7 @@ export interface IMarcers {
 
 
 export interface IShopItem {
-  _id: number;
+  _id: string;
   price: number;
   oldPrice: number;
   name: string;

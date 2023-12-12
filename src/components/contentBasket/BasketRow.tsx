@@ -33,7 +33,8 @@ const BasketRow: FC<Props> = ({ item, isOrder, count }) => {
             {count}
           </>
         ) : (
-          <BtnChangeCount className={st.changeCountBtn} item={item} />
+          <></>
+          // <BtnChangeCount className={st.changeCountBtn} item={item} />
         )}
       </div>
       <div className={st.itemTxt}>
