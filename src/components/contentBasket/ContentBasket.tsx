@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import BasketRow from "./BasketRow";
 import st from "./ContentBasket.module.scss";
-import IBasket from "@/types/entity/IBasket";
+import { IBasketItem } from "@/types/entity/IBasketItem";
 
 interface Props {
-  items: IBasket[];
+  items: IBasketItem[];
   isOrder?: boolean;
   className?: string;
 }
@@ -22,7 +22,7 @@ const ContentBasket: FC<Props> = ({ items, isOrder = false, className }) => {
         <div className={`horizontal-divider ${st.divider}`}></div>
         {items.length ? (
           items.map(({ item, count }, idx) => (
-            <BasketRow item={item} count={count} isOrder={isOrder} />
+            <BasketRow key={item} itemId={item} isOrder={isOrder} />
           ))
         ) : (
           <>Корзина пуста</>

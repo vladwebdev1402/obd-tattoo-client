@@ -19,7 +19,7 @@ const Order: FC<Props> = ({ order }) => {
       {isOpen && (
         <div className={st.contentBasketContainer}>
           <div className={st.headerTxtBasket}>Содержимое заказа</div>
-          <ContentBasket items={order.products} isOrder={true} />
+          <ContentBasket items={[]} isOrder={true} />
         </div>
       )}
       <OrderFooter isOpen={isOpen} setIsOpen={setIsOpen} />

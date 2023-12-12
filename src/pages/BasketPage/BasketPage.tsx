@@ -7,6 +7,7 @@ import ProfileDataInputs from "../../components/profileDataInputs.tsx/ProfileDat
 import Ordering from "../../components/ordering/Ordering";
 import { IContactPersonResponse } from "@/types/api/IClientResponse";
 import { observer } from "mobx-react-lite";
+import { ProfileStore } from "@/store";
 const BasketPage = observer(() => {
   const [profile, setProfile] = useState<IContactPersonResponse>({
     name: "",
@@ -28,7 +29,10 @@ const BasketPage = observer(() => {
       <h1 className={st.pageTitle}>Корзина</h1>
       <div className={st.contentPageContainer}>
         <div className={st.leftContainer}>
-          <ContentBasket items={[]} className={st.margin} />
+          <ContentBasket
+            items={ProfileStore.data.basket}
+            className={st.margin}
+          />
           <ProfileDataInputs
             isBasket
             profile={profile}
