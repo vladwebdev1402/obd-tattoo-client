@@ -9,15 +9,17 @@ import {
   ProfileStore,
   StreetStore,
 } from "@/store";
+import AuthStore from "@/store/AuthStore/AuthStore";
+import { observer } from "mobx-react-lite";
 
-const Root: FC = () => {
+const Root: FC = observer(() => {
   useEffect(() => {
     CategoryStore.getAll();
     BrandStore.getAll();
     CityStore.getAll();
     StreetStore.getAll();
     ProfileStore.getProfile();
-  }, []);
+  }, [AuthStore.auth]);
   return (
     <>
       <HeadAndNav />
@@ -25,6 +27,6 @@ const Root: FC = () => {
       <Footer />
     </>
   );
-};
+});
 
 export default Root;

@@ -1,7 +1,6 @@
 import { IContactPerson } from "@/types/entity/contactPerson";
 import BaseStore from "../BaseStore";
 import {
-  IClientResponse,
   IContactPersonResponse,
   IProfile,
 } from "@/types/api/IClientResponse";
