@@ -1,8 +1,19 @@
 .btn {
+
   display: inline-block;
   height: 30px;
   cursor: pointer;
   font-size: 20px;
+  &:hover {
+    .txtBtn {
+      color: var(--dark-orange);
+    }
+    
+    .txtBtn::after {
+    background-color: var(--dark-orange);
+
+    }
+  }
 }
 
 .txtBtn {
@@ -11,11 +22,13 @@
   padding: 0 3px;
   white-space: nowrap;
 
+  transition: .3s;
   &::after {
     position: absolute;
     content: "";
     width: 100%;
     height: 6px;
+    transition: .3s;
     background-color: var(--orange);
     left: 0;
     bottom: -3px;
