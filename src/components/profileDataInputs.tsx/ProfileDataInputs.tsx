@@ -17,14 +17,6 @@ interface Props {
 
 const ProfileDataInputs: FC<Props> = observer(
   ({ isBasket = false, profile, setProfile }) => {
-    const getAll = async () => {
-      await ProfileStore.getProfile();
-      await CityStore.getAll();
-      await StreetStore.getAll();
-      const curProfile = ProfileStore.parseResToInputs();
-      setProfile(curProfile);
-    };
-
     const changeCity = (value: { name: string; _id: string }) => {
       setProfile({ ...profile, city: value._id });
       setCurrentCity(value);
@@ -41,8 +33,9 @@ const ProfileDataInputs: FC<Props> = observer(
     );
 
     useEffect(() => {
-      getAll();
-    }, []);
+      const curProfile = ProfileStore.parseResToInputs();
+      setProfile(curProfile);
+    }, [ProfileStore.data]);
 
     useEffect(() => {
       setCurrentStreet(

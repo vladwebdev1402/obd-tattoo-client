@@ -37,10 +37,10 @@ export class BaseApi {
     return response.data
   };
 
-  static post = async <T>(
+  static post = async <I, O>(
     url: string,
-    data: T
-  ): Promise<{ data: T; message: string }> => {
+    data: I
+  ): Promise<{ data: O; message: string }> => {
     const response = await customAxios.post(url, data);
     return response.data
   };

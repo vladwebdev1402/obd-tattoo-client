@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LinkCatalog from "./CatalogLink/LinkCatalog";
 import LinkRow from "./LinkRow/LinkRow";
 import styles from "./Navbar.module.scss";
 import Search from "./Seacrh/Search";
 import Account from "../Header/Account/Account";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
-import { BrandStore, CategoryStore } from "@/store";
 
 const Navbar: React.FC = () => {
-  useEffect(() => {
-    CategoryStore.getAll();
-    BrandStore.getAll();
-  }, []);
   return (
     <div className={styles.down}>
       <LinkCatalog />
