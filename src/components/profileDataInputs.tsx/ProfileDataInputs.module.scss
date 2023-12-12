@@ -30,6 +30,20 @@
   row-gap: 23px;
 }
 
+.info_user {
+  flex-direction: column;
+}
+
+.inputs__fio {
+  display: flex;
+  gap: 20px;
+}
+
+.inputs_phone_mail {
+  display: flex;
+  gap: 20px;
+}
+
 .number {
   min-width: 168px;
   max-width: 198px;

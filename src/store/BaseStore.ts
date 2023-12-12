@@ -1,12 +1,13 @@
 import { configure, makeObservable, observable } from "mobx";
 
 class BaseStore<T> {
-    data: T[] = [];
+    data: T; 
     message: string = "";
     error: string = "";
     isLoadingComplete: boolean = false;
 
-    constructor() {
+    constructor(initValue: T) {
+        this.data = initValue;
         makeObservable(this, {
             data: observable,
             message: observable,

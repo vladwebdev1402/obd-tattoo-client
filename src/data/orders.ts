@@ -15,7 +15,7 @@ export const ordersData: IProductOrder[] = [
       number: "8 800 555-35-35",
       city: "г. Москва",
       streetAndHouse: "ул. Ленина, д.50",
-      flat: 50,
+      apartament: 50,
     },
     products: [
     
@@ -35,7 +35,7 @@ export const ordersData: IProductOrder[] = [
       number: "8 800 555-35-35",
       city: "г. Томск",
       streetAndHouse: "ул. Елизаровых, д.12",
-      flat: 10,
+      apartament: 10,
     },
     products: [
      

@@ -23,7 +23,7 @@ const OrderInfo: FC<Props> = ({ order }) => {
               <div className={st.dataContainerHead}>Адрес:</div>
               <div className={st.dataContainerValue}>
                 {order.contactPerson.city}, {order.contactPerson.streetAndHouse}
-                , кв. {order.contactPerson.flat}
+                , кв. {order.contactPerson.apartament}
               </div>
             </div>
             <div className={st.dataInfoContainer}>

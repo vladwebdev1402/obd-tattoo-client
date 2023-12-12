@@ -5,8 +5,9 @@ export interface IContactPerson {
     mail?: string;
     city?: string;
     streetAndHouse?: string;
-    flat?: number;
+    apartament?: number;
     entrance?: number;
     floor?: number;
     intercom?: number;
 }
+

@@ -2,7 +2,7 @@ import { ICategory } from "@/types/entity/ICategory";
 import BaseStore from "../BaseStore";
 import { CategoryApi } from "@/api";
 
-class CaregoryStore extends BaseStore<ICategory> {
+class CaregoryStore extends BaseStore<ICategory[]> {
     getAll = async () => {
         try {
             const res = await CategoryApi.getAll();
@@ -19,4 +19,4 @@ class CaregoryStore extends BaseStore<ICategory> {
     }
 }
 
-export default new CaregoryStore();
+export default new CaregoryStore([]);

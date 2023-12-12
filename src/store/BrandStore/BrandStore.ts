@@ -2,7 +2,7 @@ import { IBrand } from "@/types/entity/IBrand";
 import BaseStore from "../BaseStore";
 import { BrandApi } from "@/api";
 
-class BrandStore extends BaseStore<IBrand> {
+class BrandStore extends BaseStore<IBrand[]> {
     
     getAll = async (loading=false) => {
         this.isLoadingComplete = loading;
@@ -22,4 +22,4 @@ class BrandStore extends BaseStore<IBrand> {
 
 }
 
-export default new BrandStore()
+export default new BrandStore([])

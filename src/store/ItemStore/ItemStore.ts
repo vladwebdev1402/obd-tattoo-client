@@ -3,7 +3,7 @@ import BaseStore from "../BaseStore";
 import { ItemApi } from "@/api";
 import { IItemParams } from "@/types/api/itemParamsApi";
 
-class ItemStore extends BaseStore<IShopItem> {
+class ItemStore extends BaseStore<IShopItem[]> {
 
   getItems = async (params?: IItemParams, loading=false) => {
     this.isLoadingComplete = loading;
@@ -44,4 +44,4 @@ class ItemStore extends BaseStore<IShopItem> {
   } 
 }
 
-export default new ItemStore();
+export default new ItemStore([]);
