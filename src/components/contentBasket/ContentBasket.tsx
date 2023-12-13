@@ -22,7 +22,7 @@ const ContentBasket: FC<Props> = ({ items, isOrder = false, className }) => {
         <div className={`horizontal-divider ${st.divider}`}></div>
         {items.length ? (
           items.map(({ item, count }, idx) => (
-            <BasketRow key={item} itemId={item} isOrder={isOrder} />
+            <BasketRow key={item} itemId={item} count={count} isOrder={isOrder} />
           ))
         ) : (
           <>Корзина пуста</>

@@ -4,10 +4,23 @@ import {
   IContactPersonResponse,
   IProfile,
 } from "@/types/api/IClientResponse";
-import { ClientApi } from "@/api";
+import { ClientApi, ItemApi } from "@/api";
 import { BasketApi } from "@/api/BasketApi/BasketApi";
+import { makeObservable, observable } from "mobx";
 
 class IProfileStore extends BaseStore<IProfile> {
+  allPrice = 0;
+  count = 0;
+
+  constructor(initValue: IProfile) {
+    super(initValue);
+    makeObservable(
+      this, {
+        allPrice: observable,
+        count: observable
+      } 
+    )
+  }
   getProfile = async () => {
       this.message = "";
       try {
@@ -80,6 +93,18 @@ class IProfileStore extends BaseStore<IProfile> {
     const basketitem = this.data.basket.filter(i => i.item === item)[0];
     return basketitem?.count ?? 0;
   }
+
+  getBasketInfo = async () => {
+    try {
+      const response = await BasketApi.getInfoBasket();
+      this.count = response.data.count;
+      this.allPrice = response.data.allPrice;
+    }
+    catch (e) {
+      this.handleError(e);
+    }
+    
+  } 
 
   parseResToInputs = (): IContactPersonResponse => {
     return {

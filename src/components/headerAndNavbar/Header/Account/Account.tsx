@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Account.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import ModalAuth from "@/components/modalAuth/ModalAuth";
@@ -8,6 +8,7 @@ import Profile from "@UI/icons/headerAndNavIcons/Profile";
 import { observer } from "mobx-react-lite";
 import AuthStore from "@/store/AuthStore/AuthStore";
 import { urls } from "@/clientUrls/clientUrls";
+import { ProfileStore } from "@/store";
 
 interface Props {
   className?: string;
@@ -15,13 +16,20 @@ interface Props {
 const Account: React.FC<Props> = observer(({ className }) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    ProfileStore.getBasketInfo();
+  }, [ProfileStore.data.basket]);
+
   return (
     <div className={`${className} ${styles.account}`}>
       {AuthStore.auth ? (
         <>
           {modal && <ModalAuth setModal={setModal} />}
           <div className={styles.balance}>
-            <span className={styles.balanceText}>{0} ₽</span>
+            <span className={styles.balanceText}>
+              {ProfileStore.allPrice} ₽
+            </span>
             <button
               className={`icon ${styles.iconBtn} ${styles.basket}`}
               onClick={() => {
@@ -35,7 +43,7 @@ const Account: React.FC<Props> = observer(({ className }) => {
                   styles.countItemsInBasket
                 }`}
               >
-                {0}
+                {ProfileStore.count}
               </div>
             </button>
           </div>

@@ -6,5 +6,7 @@ export class BasketApi {
 
   static changeItemInBasket = async (basketItem: IBasketItem) =>
     await BaseApi.post<IBasketItem, IBasketItem[]>("/basket", basketItem);
-    
+
+  static getInfoBasket = async () => 
+    await BaseApi.get<{count: number, allPrice: number}>("/basket/info");
 }

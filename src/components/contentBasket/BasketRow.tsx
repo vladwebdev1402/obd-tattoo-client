@@ -14,7 +14,7 @@ interface Props {
   isOrder: boolean;
 }
 const BasketRow: FC<Props> = observer(
-  ({ itemId, item = null, isOrder, count }) => {
+  ({ itemId, item = null, isOrder, count = 0 }) => {
     const [bItem, setItem] = useState(item || null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -73,7 +73,7 @@ const BasketRow: FC<Props> = observer(
               <span className={st.hint}>Стоимость: </span>
               {isOrder && count
                 ? (bItem.price * count).toLocaleString("ru-RU")
-                : (bItem.price * 0).toLocaleString("ru-RU")}
+                : (bItem.price * count).toLocaleString("ru-RU")}
               ₽
             </div>
             {!isOrder && (
