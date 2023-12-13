@@ -106,6 +106,10 @@ class IProfileStore extends BaseStore<IProfile> {
     
   } 
 
+  clearBasket = () => {
+    this.data.basket = []
+  }
+
   parseResToInputs = (): IContactPersonResponse => {
     return {
       name: this.data.name,

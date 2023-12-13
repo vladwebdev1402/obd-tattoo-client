@@ -21,6 +21,9 @@ const Root: FC = observer(() => {
       StreetStore.getAll();
       ProfileStore.getProfile();
     }
+    if (!AuthStore.auth) {
+      ProfileStore.clearBasket();
+    }
   }, [AuthStore.auth]);
   return (
     <>
