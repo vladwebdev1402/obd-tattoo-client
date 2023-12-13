@@ -17,7 +17,7 @@ const AuthLoginPage = observer(() => {
 
   const loginClick = async () => {
     await AuthStore.login(login, password);
-    if (AuthStore.auth) navigate(urls.main);
+    if (AuthStore.auth) navigate(urls.profile);
   };
 
   return (

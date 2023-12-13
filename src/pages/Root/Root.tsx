@@ -16,9 +16,11 @@ const Root: FC = observer(() => {
   useEffect(() => {
     CategoryStore.getAll();
     BrandStore.getAll();
-    CityStore.getAll();
-    StreetStore.getAll();
-    ProfileStore.getProfile();
+    if (AuthStore.auth) {
+      CityStore.getAll();
+      StreetStore.getAll();
+      ProfileStore.getProfile();
+    }
   }, [AuthStore.auth]);
   return (
     <>

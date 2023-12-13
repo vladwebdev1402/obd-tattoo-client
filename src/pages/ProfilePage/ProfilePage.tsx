@@ -8,7 +8,12 @@ import st from "./ProfilePage.module.scss";
 import { ProfileStore } from "@/store";
 import { observer } from "mobx-react-lite";
 import { IContactPersonResponse } from "@/types/api/IClientResponse";
+import LineButton from "@/components/UI/button/lineButton/LineButton";
+import AuthStore from "@/store/AuthStore/AuthStore";
+import { useNavigate } from "react-router-dom";
+import { urls } from "@/clientUrls/clientUrls";
 const ProfilePage: FC = observer(() => {
+  const navigate = useNavigate();
   const discount: number = 15;
   const [profile, setProfile] = useState<IContactPersonResponse>({
     name: "",
@@ -29,6 +34,15 @@ const ProfilePage: FC = observer(() => {
       <div className={st.leftContainer}>
         <Breadcrumbs className={st.margin} />
         <h1 className={st.margin}>Личный кабинет</h1>
+        <LineButton
+          onClick={() => {
+            AuthStore.logout();
+            navigate(urls.main);
+          }}
+          className={st.profile__exit}
+        >
+          Выйти из аккаунта
+        </LineButton>
         <div className={st.msg}>{ProfileStore.message}</div>
         <ProfileDataInputs profile={profile} setProfile={setProfile} />
         <StoryOrders />

@@ -95,7 +95,7 @@ const Ordering = () => {
         <ClipButton
           className={st.clipBtn}
           onClick={() => {
-            navigate(urls.services);
+            // navigate(urls.services);
           }}
           theme="dark"
         >

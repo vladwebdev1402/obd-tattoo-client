@@ -69,6 +69,11 @@ class AuthStore {
         this.successfully = false;
     }
 
+    logout = () => {
+        TokenApi.removeToken();
+        this.auth = false;
+    }
+
     checkAuth = () => {
         if (TokenApi.getToken()) {
             this.isLoadingComplete = true;
