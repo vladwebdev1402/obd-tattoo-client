@@ -1,19 +1,19 @@
 import React, { FC } from "react";
-import { IPromocodeItem } from "@/types/entity/promocodeItem";
 import ClipButton from "@UI/button/clipButton/ClipButton";
 import styles from "./PromocodeItem.module.scss";
+import { IPromocode } from "@/types/entity/IPromocode";
 interface Props {
-  promo: IPromocodeItem;
+  promo: IPromocode;
 }
 
 const PromocodeItem: FC<Props> = ({ promo }) => {
   return (
     <div className={styles.promocodeItem}>
-      <img src={promo.img} className={styles.promItemImg} />
+      <img src={promo.image} className={styles.promItemImg} />
       <div className={styles.promDescContainer}>
         <div className={styles.promHeaderTxt}>{promo.name}</div>
         <div className={styles.promDesc}>
-          {promo.description.split("\n").map((p, idx) => (
+          {promo.description.split("\\n").map((p, idx) => (
             <p key={idx}>{p}</p>
           ))}
         </div>

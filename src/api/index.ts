@@ -7,6 +7,7 @@ import { ClientApi } from "./ClientApi/ClientApi";
 import { StreetApi } from "./StreetApi/StreetApi";
 import { CityApi } from "./CityApi/CityApi";
 import { OrderApi } from "./OrderApi/OrderApi";
+import { PromocodeApi } from "./PromocodeApi/PromocodeApi";
 export {
   ItemApi,
   CategoryApi,
@@ -17,4 +18,5 @@ export {
   StreetApi,
   CityApi,
   OrderApi,
+  PromocodeApi
 };

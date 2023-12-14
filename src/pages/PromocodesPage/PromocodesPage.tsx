@@ -1,20 +1,26 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import PromocodeItem from "../../components/promocodeItem/PromocodeItem";
 import styles from "./PromocodesPage.module.scss";
-import { promocodes } from "../../data/promocode";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
-const PromocodesPage: FC = () => {
+import { observer } from "mobx-react-lite";
+import { PromocodeStore } from "@/store";
+const PromocodesPage: FC = observer(() => {
+  useEffect(() => {
+    PromocodeStore.getAll();
+  }, []);
+
   return (
     <div className={styles.promocodesContainer}>
       <Breadcrumbs className={styles.margin} />
       <h1 className={styles.margin}>Промокоды</h1>
       <div className={styles.promocodesBody}>
-        {promocodes.map((promo) => (
-          <PromocodeItem key={promo.id} promo={promo} />
-        ))}
+        {!PromocodeStore.error &&
+          PromocodeStore.data.map((promo) => (
+            <PromocodeItem key={promo._id} promo={promo} />
+          ))}
       </div>
     </div>
   );
-};
+});
 
 export default PromocodesPage;

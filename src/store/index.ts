@@ -6,6 +6,7 @@ import ProfileStore from "./ProfileStore/ProfileStore";
 import StreetStore from "./StreetStore/StreetStore";
 import CityStore from "./CityStore/CityStore";
 import OrderStore from "./OrderStore/OrderStore";
+import PromocodeStore from "./PromocodeStore/PromocodeStore";
 export {ItemStore, 
     CategoryStore, 
     BrandStore, 
@@ -14,4 +15,5 @@ export {ItemStore,
     StreetStore, 
     CityStore,
     OrderStore, 
+    PromocodeStore
 }
