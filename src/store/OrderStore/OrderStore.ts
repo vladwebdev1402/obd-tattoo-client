@@ -1,10 +1,9 @@
 import { IOrder } from "@/types/entity/IOrder";
 import BaseStore from "../BaseStore";
 import { OrderApi } from "@/api";
-import { IContactPersonResponse } from "@/types/api/IClientResponse";
-import { IBasketItem } from "@/types/entity/IBasketItem";
 import { IPayment } from "@/types/entity/IPayment";
 import { IDelivery } from "@/types/entity/IDelivery";
+import { IPostPlaceOrder } from "@/types/api/IPostPlaceOrder";
 
 class IOrderStore extends BaseStore<IOrder[]> {
     payment: IPayment[] = [];
@@ -24,10 +23,10 @@ class IOrderStore extends BaseStore<IOrder[]> {
         }
     }
 
-    placeOrder = async (contacts: IContactPersonResponse, basket: IBasketItem[], payment: string, delivery: string) => {
+    placeOrder = async (payload: IPostPlaceOrder) => {
         this.message = "";
         try {
-            const response = await OrderApi.placeOrder(contacts, basket, payment, delivery);
+            const response = await OrderApi.placeOrder(payload);
             this.data.push(response.data);
         }
         catch (err) {

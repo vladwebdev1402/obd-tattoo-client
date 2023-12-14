@@ -3,6 +3,8 @@ import BaseStore from "../BaseStore";
 import { PromocodeApi } from "@/api";
 
 class IPromocodeStore extends BaseStore<IPromocode[]> { 
+    discount: number = 0;
+    _id: string = "";
     getAll = async () => {
         this.message = "";
         try {
@@ -21,6 +23,8 @@ class IPromocodeStore extends BaseStore<IPromocode[]> {
         this.message = "Проверка промокода";
         try {
             const response = await PromocodeApi.checkPromocode(promocode);
+            this.discount = response.data.discount;
+            this._id = response.data._id;
             this.message = response.message;
         }
         catch (err) {
@@ -30,6 +34,11 @@ class IPromocodeStore extends BaseStore<IPromocode[]> {
         finally {
             this.isLoadingComplete = true;
         }
+    }
+
+    clear = () => {
+        this.discount = 0;
+        this._id = "";
     }
 
 

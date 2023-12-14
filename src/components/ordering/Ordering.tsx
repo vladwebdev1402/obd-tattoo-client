@@ -51,13 +51,15 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
 
     // оформление заказа с последующей очисткой корзины
     try {
-      await OrderStore.placeOrder(
-        ProfileStore.parseResToInputs(),
-        ProfileStore.data.basket,
+      await OrderStore.placeOrder({
+        contacts: ProfileStore.parseResToInputs(),
+        basket: ProfileStore.data.basket,
         payment,
-        delivery
-      );
-      await ProfileStore.clearBasket();
+        delivery,
+        promocode: PromocodeStore._id,
+      });
+      ProfileStore.clearBasket();
+      PromocodeStore.clear();
       setModal(true);
     } catch (e) {}
   };
@@ -88,11 +90,13 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
         <div className={st.priceInfoWrapper}>
           <div className={st.priceInfoContainer}>
             <span className={st.infoHeadTxt}>Всего единиц товара:</span>
-            <span className={st.infoValueTxt}>{0}</span>
+            <span className={st.infoValueTxt}>{ProfileStore.count}</span>
           </div>
           <div className={st.priceInfoContainer}>
             <span className={st.infoHeadTxt}>Общая скидка:</span>
-            <span className={st.infoValueTxt}>0₽</span>
+            <span className={st.infoValueTxt}>
+              {(ProfileStore.allPrice * PromocodeStore.discount) / 100}₽
+            </span>
           </div>
           <div className={st.priceInfoContainer}>
             <span className={st.infoHeadTxt}>Доп. услуги</span>
@@ -100,7 +104,11 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
           </div>
           <div className={`${st.priceInfoContainer} ${st.totalPrice}`}>
             <span className={st.infoHeadTxt}>Итого:</span>
-            <span className={st.infoValueTxt}>{0}₽</span>
+            <span className={st.infoValueTxt}>
+              {ProfileStore.allPrice -
+                ProfileStore.allPrice * (PromocodeStore.discount / 100)}
+              ₽
+            </span>
           </div>
         </div>
         <div className={st.promocodeContainer}>
