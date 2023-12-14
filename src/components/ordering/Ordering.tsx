@@ -9,7 +9,7 @@ import MyRadio from "@UI/radio/MyRadio";
 import st from "./Ordering.module.scss";
 import { urls } from "@/clientUrls/clientUrls";
 import assert from "assert";
-import { OrderStore, ProfileStore } from "@/store";
+import { OrderStore, ProfileStore, PromocodeStore } from "@/store";
 import { IContactPersonResponse } from "@/types/api/IClientResponse";
 import { observer } from "mobx-react-lite";
 
@@ -62,6 +62,10 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
     } catch (e) {}
   };
 
+  const checkPromo = async () => {
+    await PromocodeStore.checkPromocode(promo);
+  };
+
   useEffect(() => {}, [payment, delivery]);
 
   useEffect(() => {
@@ -109,7 +113,8 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
               setPromo(e.target.value);
             }}
           />
-          <LineButton className={st.lineBtn} onClick={() => {}}>
+          <div className={st.promo__msg}>{PromocodeStore.message}</div>
+          <LineButton className={st.lineBtn} onClick={checkPromo}>
             Активировать промокод
           </LineButton>
         </div>

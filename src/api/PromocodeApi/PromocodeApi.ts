@@ -6,4 +6,9 @@ export class PromocodeApi {
         const response = await BaseApi.get<IPromocode[]>("/promocode");
         return response;
     }
+
+    static checkPromocode = async (promocode: string) => {
+        const response = await BaseApi.post<{promocode: string}, null>("/promocode/check", {promocode});
+        return response;
+    }
 }
