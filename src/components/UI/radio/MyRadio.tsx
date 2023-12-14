@@ -17,11 +17,11 @@ const MyRadio: FC<Props> = ({
   className = "",
 }) => {
   return (
-    <label className={`${st.radioContainer} ${className}`}>
+    <label className={`${st.radioContainer} ${className}`} onClick={onChange}>
       <input
         className={st.input}
         type="radio"
-        onChange={onChange}
+        onChange={() => {}}
         checked={checked}
       />
       <div className={st.radioIcon}></div>

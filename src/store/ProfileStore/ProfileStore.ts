@@ -1,9 +1,6 @@
 import { IContactPerson } from "@/types/entity/contactPerson";
 import BaseStore from "../BaseStore";
-import {
-  IContactPersonResponse,
-  IProfile,
-} from "@/types/api/IClientResponse";
+import { IContactPersonResponse, IProfile } from "@/types/api/IClientResponse";
 import { ClientApi, ItemApi } from "@/api";
 import { BasketApi } from "@/api/BasketApi/BasketApi";
 import { makeObservable, observable } from "mobx";
@@ -14,16 +11,14 @@ class IProfileStore extends BaseStore<IProfile> {
 
   constructor(initValue: IProfile) {
     super(initValue);
-    makeObservable(
-      this, {
-        allPrice: observable,
-        count: observable
-      } 
-    )
+    makeObservable(this, {
+      allPrice: observable,
+      count: observable,
+    });
   }
   getProfile = async () => {
-      this.message = "";
-      try {
+    this.message = "";
+    try {
       const response = await ClientApi.getProfile();
       this.data = response.data;
     } catch (error) {
@@ -47,68 +42,68 @@ class IProfileStore extends BaseStore<IProfile> {
 
   plusItemToBasket = async (item: string) => {
     try {
-      const basketitem = this.data.basket.filter(i => i.item === item)[0];
+      const basketitem = this.data.basket.filter((i) => i.item === item)[0];
       if (basketitem !== undefined) {
-        const response = await BasketApi.changeItemInBasket({item, count: basketitem.count + 1});
+        const response = await BasketApi.changeItemInBasket({
+          item,
+          count: basketitem.count + 1,
+        });
+        this.data.basket = response.data;
+      } else {
+        const response = await BasketApi.changeItemInBasket({ item, count: 1 });
         this.data.basket = response.data;
       }
-      else {
-        const response = await BasketApi.changeItemInBasket({item, count: 1});
-        this.data.basket = response.data;
-      }
-    }
-    catch (err) {
+    } catch (err) {
       this.handleError(err);
     }
-  }
+  };
 
   minusItemBasket = async (item: string) => {
     try {
-      const basketitem = this.data.basket.filter(i => i.item === item)[0];
-      const response = await BasketApi.changeItemInBasket({item, count: basketitem.count - 1});
+      const basketitem = this.data.basket.filter((i) => i.item === item)[0];
+      const response = await BasketApi.changeItemInBasket({
+        item,
+        count: basketitem.count - 1,
+      });
       this.data.basket = response.data;
-    }
-    catch (err) {
+    } catch (err) {
       this.handleError(err);
     }
-  }
+  };
 
   setItemBasket = async (item: string, count: number) => {
     try {
-      const response = await BasketApi.changeItemInBasket({item, count });
+      const response = await BasketApi.changeItemInBasket({ item, count });
       this.data.basket = response.data;
-    }
-    catch (err) {
+    } catch (err) {
       this.handleError(err);
     }
-  }
+  };
 
-  checkItemInBasket = (item: string) : boolean => {
-    const basketitem = this.data.basket.filter(i => i.item === item)[0];
+  checkItemInBasket = (item: string): boolean => {
+    const basketitem = this.data.basket.filter((i) => i.item === item)[0];
     if (basketitem !== undefined) return true;
     else return false;
-  }
+  };
 
-  getCountItemInBasket = (item: string): number =>  {
-    const basketitem = this.data.basket.filter(i => i.item === item)[0];
+  getCountItemInBasket = (item: string): number => {
+    const basketitem = this.data.basket.filter((i) => i.item === item)[0];
     return basketitem?.count ?? 0;
-  }
+  };
 
   getBasketInfo = async () => {
     try {
       const response = await BasketApi.getInfoBasket();
       this.count = response.data.count;
       this.allPrice = response.data.allPrice;
-    }
-    catch (e) {
+    } catch (e) {
       this.handleError(e);
     }
-    
-  } 
+  };
 
   clearBasket = () => {
-    this.data.basket = []
-  }
+    this.data.basket = [];
+  };
 
   parseResToInputs = (): IContactPersonResponse => {
     return {
@@ -124,6 +119,19 @@ class IProfileStore extends BaseStore<IProfile> {
       floor: this.data.floor,
       intercom: this.data.intercom,
     };
+  };
+
+  checkValuesProfile = () => {
+    return (
+      this.data.name &&
+      this.data.surname &&
+      this.data.patroname &&
+      this.data.phone &&
+      this.data.mail &&
+      this.data.city &&
+      this.data.street &&
+      this.data.apartament || false
+    );
   };
 }
 

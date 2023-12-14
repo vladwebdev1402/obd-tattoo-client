@@ -40,7 +40,7 @@ const BasketPage = observer(() => {
           />
         </div>
         <div className={st.rightContainer}>
-          <Ordering />
+          <Ordering contacts={profile} />
         </div>
       </div>
     </div>

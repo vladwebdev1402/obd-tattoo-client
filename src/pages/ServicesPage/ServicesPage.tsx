@@ -4,6 +4,7 @@ import Ordering from "../../components/ordering/Ordering";
 import ServiceItem from "../../components/serviceItem/ServiceItem";
 import { servicesData } from "../../data/servicesData";
 import st from "./ServicesPage.module.scss";
+import { ProfileStore } from "@/store";
 const ServicesPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 100, behavior: "smooth" });
@@ -18,7 +19,7 @@ const ServicesPage = () => {
             <ServiceItem key={item.id} item={item} />
           ))}
         </div>
-        <Ordering />
+        <Ordering contacts={ProfileStore.parseResToInputs()} />
       </div>
     </div>
   );

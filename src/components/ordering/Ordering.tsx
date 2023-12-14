@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ModalThanksOrder from "@/components/modalThanksOrder/ModalThanksOrder";
 import ClipButton from "@UI/button/clipButton/ClipButton";
@@ -7,15 +7,72 @@ import MyChecked from "@UI/checked/MyChecked";
 import MyInput from "@UI/input/MyInput";
 import MyRadio from "@UI/radio/MyRadio";
 import st from "./Ordering.module.scss";
-import { deliveryRadios, paymentRadios } from "./radios";
 import { urls } from "@/clientUrls/clientUrls";
-const Ordering = () => {
+import assert from "assert";
+import { OrderStore, ProfileStore } from "@/store";
+import { IContactPersonResponse } from "@/types/api/IClientResponse";
+import { observer } from "mobx-react-lite";
+
+interface Props {
+  contacts: IContactPersonResponse;
+}
+
+const Ordering: FC<Props> = observer(({ contacts }) => {
   const navigate = useNavigate();
-  const [payment, setPayment] = useState("Онлайн на сайте");
-  const [delivery, setDelivery] = useState("Курьерская служба");
+  const [payment, setPayment] = useState("");
+  const [delivery, setDelivery] = useState("");
   const [checked, setChecked] = useState(false);
   const [promo, setPromo] = useState("");
   const [modal, setModal] = useState(false);
+  const placeOrder = async () => {
+    // проверка согласия
+    if (!checked) {
+      OrderStore.setMessage("Необходимо согласиться с нашими условиями!");
+      return;
+    }
+    // проверка, что корзина не пустая
+    if (ProfileStore.data.basket.length === 0) {
+      OrderStore.setMessage("Добавьте товары в корзину!");
+      return;
+    }
+    // обновление профиля, если были изменения
+    try {
+      assert.deepStrictEqual(contacts, ProfileStore.parseResToInputs(), "not");
+    } catch {
+      await ProfileStore.putProfile(contacts);
+    }
+    // проверка, что анкета полностью заполнена
+    if (!ProfileStore.checkValuesProfile()) {
+      OrderStore.setMessage("Заполните все обязательные поля в анкете!");
+      return;
+    }
+
+    // оформление заказа с последующей очисткой корзины
+    try {
+      await OrderStore.placeOrder(
+        ProfileStore.parseResToInputs(),
+        ProfileStore.data.basket,
+        payment,
+        delivery
+      );
+      await ProfileStore.clearBasket();
+    } catch (e) {}
+  };
+
+  useEffect(() => {}, [payment, delivery]);
+
+  useEffect(() => {
+    setDelivery(OrderStore.delivery[0]?._id ?? "");
+  }, [OrderStore.delivery]);
+
+  useEffect(() => {
+    setPayment(OrderStore.payment[0]?._id ?? "");
+  }, [OrderStore.payment]);
+
+  useEffect(() => {
+    OrderStore.getDelivery();
+    OrderStore.getPayment();
+  }, []);
 
   return (
     <div className={st.container}>
@@ -60,31 +117,33 @@ const Ordering = () => {
           <div className={st.radiosContainer}>
             <div className={st.radiosTitle}>Оплата</div>
             <div className={st.radios}>
-              {paymentRadios.map((r) => (
-                <MyRadio
-                  onChange={() => setPayment(r.title)}
-                  title={r.title}
-                  checked={payment == r.title}
-                  question={r.question}
-                  key={r.title}
-                  className={st.radio}
-                />
-              ))}
+              {OrderStore.payment.length > 0 &&
+                OrderStore.payment.map((r) => (
+                  <MyRadio
+                    onChange={() => setPayment(r._id)}
+                    title={r.name}
+                    checked={payment == r._id}
+                    question={r.promt}
+                    key={r._id}
+                    className={st.radio}
+                  />
+                ))}
             </div>
           </div>
           <div className={st.radiosContainer}>
             <div className={st.radiosTitle}>Доставка</div>
             <div className={st.radios}>
-              {deliveryRadios.map((r) => (
-                <MyRadio
-                  onChange={() => setDelivery(r.title)}
-                  title={r.title}
-                  checked={delivery == r.title}
-                  question={r.question}
-                  key={r.title}
-                  className={st.radio}
-                />
-              ))}
+              {OrderStore.delivery.length > 0 &&
+                OrderStore.delivery.map((r) => (
+                  <MyRadio
+                    onChange={() => setDelivery(r._id)}
+                    title={r.name}
+                    checked={delivery == r._id}
+                    question={r.promt}
+                    key={r._id}
+                    className={st.radio}
+                  />
+                ))}
             </div>
           </div>
         </div>
@@ -95,13 +154,14 @@ const Ordering = () => {
         <ClipButton
           className={st.clipBtn}
           onClick={() => {
+            placeOrder();
             // navigate(urls.services);
           }}
           theme="dark"
         >
           Оформить заказ
         </ClipButton>
-        <ClipButton
+        {/* <ClipButton
           className={st.clipBtn}
           onClick={() => {
             setModal(true);
@@ -109,7 +169,7 @@ const Ordering = () => {
           theme="light"
         >
           Купить в 1 клик
-        </ClipButton>
+        </ClipButton> */}
         <MyChecked
           className={st.checked}
           onChange={() => setChecked(!checked)}
@@ -125,9 +185,10 @@ const Ordering = () => {
             обработкой персональных данных
           </a>
         </MyChecked>
+        <div className={st.order__msg}>{OrderStore.message}</div>
       </div>
     </div>
   );
-};
+});
 
 export default Ordering;
