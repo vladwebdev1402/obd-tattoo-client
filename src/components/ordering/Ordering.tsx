@@ -35,16 +35,18 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
       OrderStore.setMessage("Добавьте товары в корзину!");
       return;
     }
+
+    // проверка, что анкета полностью заполнена
+    if (!ProfileStore.checkValuesProfile(contacts)) {
+      OrderStore.setMessage("Заполните все обязательные поля в анкете!");
+      return;
+    }
+
     // обновление профиля, если были изменения
     try {
       assert.deepStrictEqual(contacts, ProfileStore.parseResToInputs(), "not");
     } catch {
       await ProfileStore.putProfile(contacts);
-    }
-    // проверка, что анкета полностью заполнена
-    if (!ProfileStore.checkValuesProfile()) {
-      OrderStore.setMessage("Заполните все обязательные поля в анкете!");
-      return;
     }
 
     // оформление заказа с последующей очисткой корзины
@@ -56,6 +58,7 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
         delivery
       );
       await ProfileStore.clearBasket();
+      setModal(true);
     } catch (e) {}
   };
 
@@ -170,6 +173,7 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
         >
           Купить в 1 клик
         </ClipButton> */}
+        <div className={st.order__msg}>{OrderStore.message}</div>
         <MyChecked
           className={st.checked}
           onChange={() => setChecked(!checked)}
@@ -185,7 +189,6 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
             обработкой персональных данных
           </a>
         </MyChecked>
-        <div className={st.order__msg}>{OrderStore.message}</div>
       </div>
     </div>
   );

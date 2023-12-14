@@ -121,16 +121,16 @@ class IProfileStore extends BaseStore<IProfile> {
     };
   };
 
-  checkValuesProfile = () => {
+  checkValuesProfile = (data: IContactPersonResponse) => {
     return (
-      this.data.name &&
-      this.data.surname &&
-      this.data.patroname &&
-      this.data.phone &&
-      this.data.mail &&
-      this.data.city &&
-      this.data.street &&
-      this.data.apartament || false
+      data.name &&
+      data.surname &&
+      data.patroname &&
+      data.phone &&
+      data.mail &&
+      data.city &&
+      data.street &&
+      data.apartament || false
     );
   };
 }
