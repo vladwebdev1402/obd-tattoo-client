@@ -1,6 +1,7 @@
 import axios from "axios";
 import { AuthUrl } from "../url";
 import { IAuthError } from "@/types/api/IAuthError";
+import { TokenApi } from "../TokenApi/TokenApi";
 
 const customAxios = axios.create({
   baseURL: AuthUrl,
@@ -35,4 +36,9 @@ export class AuthApi {
     const response = await customAxios.post("/login", { login, password });
     return response.data;
   };
+
+  static check = async (): Promise<{ message: string; successfully: boolean }> => {
+    const response = await customAxios.get("/check", {headers: {"Authorization": TokenApi.getToken()}});
+    return response.data;
+  }
 }

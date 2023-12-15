@@ -45,19 +45,15 @@ class AuthStore {
             const response = await AuthApi.login(login, password);
             this.message = response.message;
             this.successfully = response.successfully;
-            this.isLoadingComplete = true;
-            
-            if (this.successfully) {
+            if (response.successfully) {
                 this.auth = true
                 TokenApi.setToken(response.token);
             };
-            
         }
         catch (err) {
             if (err instanceof Error) this.error = err.message;
             else if (typeof err === "string") this.error = err;
             this.successfully = false;
-            this.isLoadingComplete = true;
         } finally {
             this.isLoadingComplete = true;
         }
@@ -74,11 +70,11 @@ class AuthStore {
         this.auth = false;
     }
 
-    checkAuth = () => {
-        if (TokenApi.getToken()) {
+    checkAuth = async () => {
+        if (TokenApi.getToken() && ((await AuthApi.check()).successfully)) {
             this.isLoadingComplete = true;
             this.auth = true
-        };
+        } else TokenApi.removeToken()
         this.isLoadingComplete = true;
     }
 
