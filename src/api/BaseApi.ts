@@ -23,7 +23,7 @@ customAxios.interceptors.response.use(
       error.response.status !== 404 &&
       error.response.status !== 500
     )
-      return error.response;
+    return error.response;
     else return Promise.reject(error);
   }
 );

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { IProductOrder } from "@/types/entity/orderProduct";
 import st from "./StoryOrders.module.scss";
+import { IOrder } from "@/types/entity/IOrder";
 interface Props {
-  order: IProductOrder;
+  order: IOrder;
 }
 const OrderInfo: FC<Props> = ({ order }) => {
   return (
@@ -17,19 +17,19 @@ const OrderInfo: FC<Props> = ({ order }) => {
           <div className={st.dataInfoWrapper}>
             <div className={st.dataInfoContainer}>
               <div className={st.dataContainerHead}>Номер заказа:</div>
-              <div className={st.dataContainerValue}>{order.numberOrder}</div>
+              <div className={st.dataContainerValue}>{order.number}</div>
             </div>
             <div className={st.dataInfoContainer}>
               <div className={st.dataContainerHead}>Адрес:</div>
               <div className={st.dataContainerValue}>
-                {order.contactPerson.city}, {order.contactPerson.streetAndHouse}
-                , кв. {order.contactPerson.apartament}
+                {order.contacts.city.name}, {order.contacts.street.name}, кв.{" "}
+                {order.contacts.apartament}
               </div>
             </div>
             <div className={st.dataInfoContainer}>
               <div className={st.dataContainerHead}>Сумма заказа:</div>
               <div className={st.dataContainerValue}>
-                {order.sum.toLocaleString("ru-RU")} ₽
+                {order.allPrice.toLocaleString("ru-RU")} ₽
               </div>
             </div>
           </div>
@@ -40,20 +40,19 @@ const OrderInfo: FC<Props> = ({ order }) => {
             <div className={st.dataInfoContainer}>
               <div className={st.dataContainerHead}>ФИО</div>
               <div className={st.dataContainerValue}>
-                {order.contactPerson.fullName}
+                {order.contacts.name} {order.contacts.surname}{" "}
+                {order.contacts.patroname}{" "}
               </div>
             </div>
             <div className={st.dataInfoContainer}>
               <div className={st.dataContainerHead}>Телефон</div>
               <div className={st.dataContainerValue}>
-                {order.contactPerson.number}
+                {order.contacts.phone}
               </div>
             </div>
             <div className={st.dataInfoContainer}>
               <div className={st.dataContainerHead}>Эл. почта</div>
-              <div className={st.dataContainerValue}>
-                {order.contactPerson.mail}
-              </div>
+              <div className={st.dataContainerValue}>{order.contacts.mail}</div>
             </div>
           </div>
         </div>

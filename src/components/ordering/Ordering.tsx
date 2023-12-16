@@ -24,6 +24,7 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
   const [checked, setChecked] = useState(false);
   const [promo, setPromo] = useState("");
   const [modal, setModal] = useState(false);
+  const [number, setNumber] = useState(0);
   const placeOrder = async () => {
     // проверка согласия
     if (!checked) {
@@ -51,15 +52,14 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
 
     // оформление заказа с последующей очисткой корзины
     try {
-      await OrderStore.placeOrder({
+      const num = await OrderStore.placeOrder({
         contacts: ProfileStore.parseResToInputs(),
         basket: ProfileStore.data.basket,
         payment,
         delivery,
         promocode: PromocodeStore._id,
       });
-      ProfileStore.clearBasket();
-      PromocodeStore.clear();
+      setNumber(num);
       setModal(true);
     } catch (e) {}
   };
@@ -85,7 +85,7 @@ const Ordering: FC<Props> = observer(({ contacts }) => {
 
   return (
     <div className={st.container}>
-      {modal && <ModalThanksOrder setModal={setModal} />}
+      {modal && <ModalThanksOrder number={number} setModal={setModal} />}
       <div className={st.block1}>
         <div className={st.priceInfoWrapper}>
           <div className={st.priceInfoContainer}>

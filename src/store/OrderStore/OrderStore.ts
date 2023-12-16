@@ -4,6 +4,8 @@ import { OrderApi } from "@/api";
 import { IPayment } from "@/types/entity/IPayment";
 import { IDelivery } from "@/types/entity/IDelivery";
 import { IPostPlaceOrder } from "@/types/api/IPostPlaceOrder";
+import ProfileStore from "../ProfileStore/ProfileStore";
+import PromocodeStore from "../PromocodeStore/PromocodeStore";
 
 class IOrderStore extends BaseStore<IOrder[]> {
     payment: IPayment[] = [];
@@ -23,15 +25,20 @@ class IOrderStore extends BaseStore<IOrder[]> {
         }
     }
 
-    placeOrder = async (payload: IPostPlaceOrder) => {
+    placeOrder = async (payload: IPostPlaceOrder): Promise<number> => {
         this.message = "";
         try {
             const response = await OrderApi.placeOrder(payload);
             this.data.push(response.data);
+            ProfileStore.clearBasket();
+            PromocodeStore.clear();
+            return response.data.number;
         }
         catch (err) {
             this.handleError(err);
             this.message = "Произошла ошибка при оформлении заказа";
+            throw new Error("Произошла ошибка при оформлении заказа")
+            return 0;
         }
         finally {
             this.isLoadingComplete = true;

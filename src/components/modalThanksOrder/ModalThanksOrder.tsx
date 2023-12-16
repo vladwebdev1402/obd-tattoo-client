@@ -6,11 +6,14 @@ import st from "./ModalThanksOrder.module.scss";
 import ModalView from "@UI/modal/ModalView";
 import CloseModal from "@UI/button/closeModal/CloseModal";
 import { urls } from "@/clientUrls/clientUrls";
+import { OrderStore } from "@/store";
+import { observer } from "mobx-react-lite";
 interface Props {
   setModal: (value: boolean) => void;
+  number: number;
 }
 
-const ModalThanksOrder: FC<Props> = ({ setModal }) => {
+const ModalThanksOrder: FC<Props> = observer(({ setModal, number }) => {
   const navigate = useNavigate();
   return (
     <ModalView onClick={() => setModal(false)}>
@@ -24,7 +27,7 @@ const ModalThanksOrder: FC<Props> = ({ setModal }) => {
 
         <div className={st.head}>Спасибо за заказ!</div>
         <div className={st.numberOrder}>
-          Номер вашего заказа: <span className={st.number}>123456789</span>
+          Номер вашего заказа: <span className={st.number}>{number}</span>
         </div>
         <div className={st.helpInfo}>
           В ближайшее время с вами свяжется наш менеджер для уточнения деталей
@@ -57,6 +60,6 @@ const ModalThanksOrder: FC<Props> = ({ setModal }) => {
       </div>
     </ModalView>
   );
-};
+});
 
 export default ModalThanksOrder;

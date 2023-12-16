@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import { IProductOrder } from "@/types/entity/orderProduct";
 import st from "./StoryOrders.module.scss";
+import { IOrder } from "@/types/entity/IOrder";
 
 interface Props {
   isOpen: boolean;
-  order: IProductOrder;
+  order: IOrder;
   setIsOpen: (isOpen: boolean) => void;
 }
 
@@ -13,25 +13,27 @@ const OrderHead: FC<Props> = ({ isOpen, setIsOpen, order }) => {
     <div className={st.containerOrderHead} onClick={() => setIsOpen(!isOpen)}>
       <div className={st.dataContainer}>
         <div className={st.dataContainerHead}>Дата:</div>
-        <div className={st.dataContainerValue}>{order.date}</div>
+        <div className={st.dataContainerValue}>
+          {new Date(order.date).toLocaleDateString("ru")}
+        </div>
       </div>
       <div className={st.dataContainer}>
         <div className={st.dataContainerHead}>Номер заказа:</div>
-        <div className={st.dataContainerValue}>{order.numberOrder}</div>
+        <div className={st.dataContainerValue}>{order.number}</div>
       </div>
       <div className={st.dataContainer}>
         <div className={st.dataContainerHead}>Кол-во товаров:</div>
-        <div className={st.dataContainerValue}>{order.countProduct}</div>
+        <div className={st.dataContainerValue}>{order.countItems}</div>
       </div>
       <div className={st.dataContainer}>
         <div className={st.dataContainerHead}>На сумму:</div>
         <div className={st.dataContainerValue}>
-          {order.sum.toLocaleString("ru-RU")} ₽
+          {order.allPrice.toLocaleString("ru-RU")} ₽
         </div>
       </div>
       <div className={st.dataContainer}>
         <div className={st.dataContainerHead}>Статус:</div>
-        <div className={st.dataContainerValue}>{order.status}</div>
+        <div className={st.dataContainerValue}>{order.status.name}</div>
       </div>
       <div className={`${st.openIcon} ${isOpen && st.activeIcon}`}></div>
     </div>

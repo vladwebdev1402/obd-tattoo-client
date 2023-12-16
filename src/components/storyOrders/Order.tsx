@@ -1,12 +1,12 @@
 import React, { FC, useState } from "react";
-import { IProductOrder } from "@/types/entity/orderProduct";
 import ContentBasket from "../contentBasket/ContentBasket";
 import OrderFooter from "./OrderFooter";
 import OrderHead from "./OrderHead";
 import OrderInfo from "./OrderInfo";
 import st from "./StoryOrders.module.scss";
+import { IOrder } from "@/types/entity/IOrder";
 interface Props {
-  order: IProductOrder;
+  order: IOrder;
 }
 const Order: FC<Props> = ({ order }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -19,7 +19,7 @@ const Order: FC<Props> = ({ order }) => {
       {isOpen && (
         <div className={st.contentBasketContainer}>
           <div className={st.headerTxtBasket}>Содержимое заказа</div>
-          <ContentBasket items={[]} isOrder={true} />
+          <ContentBasket items={order.basket} isOrder={true} />
         </div>
       )}
       <OrderFooter isOpen={isOpen} setIsOpen={setIsOpen} />
